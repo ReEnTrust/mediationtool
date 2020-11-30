@@ -9,12 +9,17 @@ def index(request):
     template = loader.get_template('newsfeed/index.html')
     return HttpResponse(template.render(context,request))
 
-def simple_page(request):
+def result(request):
     context={}
-    template = loader.get_template('newsfeed/simple_page.html')
+    template = loader.get_template('newsfeed/result.html')
     return HttpResponse(template.render(context,request))
 
-def shortcodes(request):
+def privacy(request):
     context={}
-    template = loader.get_template('newsfeed/shortcodes.html')
+    template = loader.get_template('newsfeed/privacy.html')
+    return HttpResponse(template.render(context,request))
+
+def transparency(request):
+    context={}
+    template = loader.get_template('newsfeed/transparency.html')
     return HttpResponse(template.render(context,request))

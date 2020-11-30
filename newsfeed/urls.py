@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [
     path('index.html',views.index, name='index'),
-    path('simple_page.html',views.simple_page, name='simple_page'),
-    path('shortcodes.html',views.shortcodes, name='shortcodes'),
+    path('result.html',views.result, name='result'),
+    path('privacy.html',views.privacy, name='privacy'),
+    path('transparency.html',views.transparency, name='transparency'),
 ]

@@ -9,7 +9,9 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
 
-    <title>Ramayana - Free Bootstrap 4 CSS Template</title>
+    {% block site_title %}
+    <title>Mediation Tool (prototype)</title>
+    {% endblock site_title %}
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -18,11 +20,12 @@
 Ramayana CSS Template
 https://templatemo.com/tm-529-ramayana
 -->
-
+    {% block head_css %}
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="/static/newsfeed/assets/css/fontawesome.css">
     <link rel="stylesheet" href="/static/newsfeed/assets/css/templatemo-style.css">
     <link rel="stylesheet" href="/static/newsfeed/assets/css/owl.css">
+    {% endblock head_css %}
 
   </head>
 
@@ -35,13 +38,18 @@ https://templatemo.com/tm-529-ramayana
         <div id="main">
           <div class="inner">
 
+            {% block header_wrapper %}
             <!-- Header -->
             <header id="header">
+            {% block header_logo %}
               <div class="logo">
-                <a href="index.html">Ramayana</a>
+                <a href="index.html">Mediation tool</a>
               </div>
+            {% endblock header_logo %}
             </header>
+            {% endblock header_wrapper %}
 
+            {% block banner_wrapper %}
             <!-- Banner -->
             <section class="main-banner">
               <div class="container-fluid">
@@ -50,14 +58,13 @@ https://templatemo.com/tm-529-ramayana
                     <div class="banner-content">
                       <div class="row">
                         <div class="col-md-12">
+                        {% block banner_title %}
                           <div class="banner-caption">
-                            <h4>Hello, this is your <em>Ramayana</em> Theme.</h4>
-                            <span>AWESOME HTML5 &amp; CSS3 TEMPLATE</span>
-                            <p>Do you know that <strong>Ramayana</strong> is a free to use Bootstrap 4 CSS template by <strong>templatemo</strong>? You can edit and add more pages as you wanted for your personal or corporate websites.</p>
-                            <div class="primary-button">
-                              <a href="#">Read More</a>
-                            </div>
+                            <h4>Hello, this is a <em>Mediation Tool</em>.</h4>
+                            <span>by ReEnTrust Project</span>
+                            <p>The Mediation Tool is a platform developed by the ReEnTrust Project to experiment about users’ empowerment on recommendation systems. More at <a href="http://reentrust.org/">http://reentrust.org/</a></p>
                           </div>
+                        {% endblock banner_title %}
                         </div>
                       </div>
                     </div>
@@ -65,7 +72,7 @@ https://templatemo.com/tm-529-ramayana
                 </div>
               </div>
             </section>
-
+            {% endblock banner_wrapper %}
             <!-- Services -->
             <section class="services">
               <div class="container-fluid">
@@ -75,41 +82,6 @@ https://templatemo.com/tm-529-ramayana
                       <div class="icon"></div>
                       <h4>Web Design</h4>
                       <p>Credit goes to <a rel="nofollow" href="https://www.pexels.com">Pexels</a> and <a rel="nofollow" href="https://www.rawpixel.com">Raw Pixel</a> for images used in this template. Thank you.</p>
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="service-item second-item">
-                      <div class="icon"></div>
-                      <h4>Bootstrap 4</h4>
-                      <p>Proin aliquam facilisis ante interdum. Sed nulla feugiat tempus aliquam.</p>
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="service-item third-item">
-                      <div class="icon"></div>
-                      <h4>HTML CSS</h4>
-                      <p>Proin aliquam facilisis ante interdum. Sed nulla feugiat tempus aliquam.</p>
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="service-item fourth-item">
-                      <div class="icon"></div>
-                      <h4>Download Free</h4>
-                      <p>We have many free to use CSS web templates on our site for you.</p>
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="service-item fivth-item">
-                      <div class="icon"></div>
-                      <h4>Get in touch</h4>
-                      <p>You can get the fastest response from <a rel="nofollow" href="https://www.facebook.com/templatemo">templatemo</a> facebook page.</p>
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="service-item sixth-item">
-                      <div class="icon"></div>
-                      <h4>Spread a word</h4>
-                      <p>Please tell your friends about our website. This is very helpful.</p>
                     </div>
                   </div>
                 </div>
@@ -193,59 +165,16 @@ https://templatemo.com/tm-529-ramayana
             <nav id="menu">
               <ul>
                 <li><a href="index.html">Homepage</a></li>
-                <li><a href="simple_page.html">Simple Page</a></li>
-                <li><a href="shortcodes.html">Shortcodes</a></li>
-                <li>
-                  <span class="opener">Dropdown One</span>
-                  <ul>
-                    <li><a href="#">First Sub Menu</a></li>
-                    <li><a href="#">Second Sub Menu</a></li>
-                    <li><a href="#">Third Sub Menu</a></li>
-                  </ul>
-                </li>
-                <li>
-                  <span class="opener">Dropdown Two</span>
-                  <ul>
-                    <li><a href="#">Sub Menu #1</a></li>
-                    <li><a href="#">Sub Menu #2</a></li>
-                    <li><a href="#">Sub Menu #3</a></li>
-                  </ul>
-                </li>
-                <li><a href="https://www.google.com">External Link</a></li>
+                <li><a href="result.html">Result</a></li>
+                <li><a href="privacy.html">Privacy</a></li>
+                <li><a href="transparency.html">Transparency</a></li>
               </ul>
             </nav>
 
-            <!-- Featured Posts -->
-            <div class="featured-posts">
-              <div class="heading">
-                <h2>Featured Posts</h2>
-              </div>
-              <div class="owl-carousel owl-theme">
-                <a href="#">
-                  <div class="featured-item">
-                    <img src="assets/images/featured_post_01.jpg" alt="featured one">
-                    <p>Aliquam egestas convallis eros sed gravida. Curabitur consequat sit.</p>
-                  </div>
-                </a>
-                <a href="#">
-                  <div class="featured-item">
-                    <img src="assets/images/featured_post_01.jpg" alt="featured two">
-                    <p>Donec a scelerisque massa. Aliquam non iaculis quam. Duis arcu turpis.</p>
-                  </div>
-                </a>
-                <a href="#">
-                  <div class="featured-item">
-                    <img src="assets/images/featured_post_01.jpg" alt="featured three">
-                    <p>Suspendisse ac convallis urna, vitae luctus ante. Donec sit amet.</p>
-                  </div>
-                </a>
-              </div>
-            </div>
-
             <!-- Footer -->
             <footer id="footer">
-              <p class="copyright">Copyright &copy; 2019 Company Name
-              <br>Designed by <a rel="nofollow" href="https://www.facebook.com/templatemo">Template Mo</a></p>
+              <p class="copyright">ReEnTrust 2020
+              <br>Designed based on <a rel="nofollow" href="https://www.facebook.com/templatemo">Template Mo</a></p>
             </footer>
 
           </div>
