@@ -37,12 +37,16 @@ https://templatemo.com/tm-529-ramayana
         <div id="main">
           <div class="inner">
 
+            {% block header_wrapper %}
             <!-- Header -->
             <header id="header">
+            {% block header_logo %}
               <div class="logo">
-                <a href="index.html">Ramayana</a>
+                <a href="index.html">Mediation tool</a>
               </div>
+            {% endblock header_logo %}
             </header>
+            {% endblock header_wrapper %}
 
             <!-- Page Heading -->
             <div class="page-heading">
