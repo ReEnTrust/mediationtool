@@ -6,5 +6,6 @@ urlpatterns = [
     path('result.html',views.result, name='result'),
     path('privacy.html',views.privacy, name='privacy'),
     path('transparency.html',views.transparency, name='transparency'),
+    path('personal.html',views.transparency, name='personal'),
     path('consensus.html',views.transparency, name='consensus'),
 ]

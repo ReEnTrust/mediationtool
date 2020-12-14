@@ -24,6 +24,11 @@ def transparency(request):
     template = loader.get_template('newsfeed/transparency.html')
     return HttpResponse(template.render(context,request))
 
+def personal(request):
+    context={}
+    template = loader.get_template('newsfeed/personal.html')
+    return HttpResponse(template.render(context,request))
+
 def consensus(request):
     context={}
     template = loader.get_template('newsfeed/consensus.html')
