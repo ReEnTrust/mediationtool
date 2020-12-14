@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+
+    {% block site_title %}
+    <title>Mediation Tool (prototype)</title>
+    {% endblock site_title %}
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/newsfeed/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="/static/newsfeed/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="/static/newsfeed/assets/css/templatemo-style.css">
+    <link rel="stylesheet" href="/static/newsfeed/assets/css/owl.css">
+
+  </head>
+
+<body class="is-preload">
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+      <!-- Main -->
+        <div id="main">
+          <div class="inner">
+
+            {% block header_wrapper %}
+            <!-- Header -->
+            <header id="header">
+            {% block header_logo %}
+              <div class="logo">
+                <a href="index.html">Mediation tool</a>
+              </div>
+            {% endblock header_logo %}
+            </header>
+            {% endblock header_wrapper %}
+
+            <!-- Page Heading -->
+            <div class="page-heading">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-12">
+                    <h1>Default results</h1>
+                    <p><strong>These results</strong> are given to users about who we don't know anything. They content sponsorised articles as well as the most popular in the latest ones. If you want a more personalised recommendation, you need to explore the other tabs and give us the information you want us to take into account.</p>
+                  </div>
+                </div>
+              </div>
+            </div> 
+
+{% block content %}
+              <section class="simple-post">
+              <div class="container-fluid">
+              
+               <div class="row">
+                  <div class="col-lg-4">
+						<h2>News 1</h2>
+                      <p>Aliquam sit amet gravida tellus. Phasellus id erat nec mi ullamcorper viverra. Quisque vitae pharetra sem. Maecenas sit amet velit ultrices, malesuada quam id, porta nisl.</p>
+                      <br>
+
+                  </div>
+                  <div class="col-lg-4">
+						<h2>News 2</h2>
+                      <p>Donec et massa at dolor condimentum ornare nec non lorem. Maecenas non egestas metus, sed ultricies lectus. Aliquam sit amet gravida tellus. Phasellus id erat nec mi ullamcorper viverra.</p>
+                      <br>
+
+                  </div>
+                  <div class="col-lg-4">
+						<h2>News 3</h2>
+                      <p>Quisque sodales vestibulum arcu porttitor finibus. Phasellus dictum nisl id augue ornare, vel interdum nibh mollis. Aliquam sit amet gravida tellus.</p>
+
+                  </div>
+                </div>
+                
+              </div>
+              </section>
+
+
+            <div class="page-heading">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-12">
+                    <h1>Personalised results</h1>
+                    <p><strong>These results</strong> are given according to your settings and choices.</p>
+                  </div>
+                </div>
+              </div>
+            </div> 
+
+
+              <section class="simple-post">
+              <div class="container-fluid">
+              
+               <div class="row">
+                  <div class="col-lg-4">
+						<h2>News 1</h2>
+                      <p>Aliquam sit amet gravida tellus. Phasellus id erat nec mi ullamcorper viverra. Quisque vitae pharetra sem. Maecenas sit amet velit ultrices, malesuada quam id, porta nisl.</p>
+                      <br>
+
+                  </div>
+                  <div class="col-lg-4">
+						<h2>News 2</h2>
+                      <p>Donec et massa at dolor condimentum ornare nec non lorem. Maecenas non egestas metus, sed ultricies lectus. Aliquam sit amet gravida tellus. Phasellus id erat nec mi ullamcorper viverra.</p>
+                      <br>
+
+                  </div>
+                  <div class="col-lg-4">
+						<h2>News 3</h2>
+                      <p>Quisque sodales vestibulum arcu porttitor finibus. Phasellus dictum nisl id augue ornare, vel interdum nibh mollis. Aliquam sit amet gravida tellus.</p>
+
+                  </div>
+                </div>
+                
+              </div>
+              </section>
+{% endblock content %}
+
+
+          </div>
+        </div>
+    
+
+
+
+
+{% block left_sidebar %}
+      <!-- Sidebar -->
+        <div id="sidebar">
+
+          <div class="inner">
+
+            <!-- Search Box -->
+            <section id="search" class="alt">
+              <form method="get" action="#">
+                <input type="text" name="search" id="search" placeholder="Search..." />
+              </form>
+            </section>
+              
+            <!-- Menu -->
+            <nav id="menu">
+              <ul>
+                <li><a href="index.html">Homepage</a></li>
+                <li><a href="result.html">Result</a></li>
+                <li><a href="privacy.html">Privacy</a></li>
+                <li><a href="transparency.html">Transparency</a></li>
+                <li><a href="consensus.html">Consensus and Compromise</a></li>
+              </ul>
+            </nav>
+
+        {% block footer %}
+            <!-- Footer -->
+            <footer id="footer">
+              <p class="copyright">ReEnTrust 2020
+              <br>Designed based on <a rel="nofollow" href="https://www.facebook.com/templatemo">Template Mo</a></p>
+            </footer>
+        {% endblock footer %}
+
+          </div>
+        </div>
+{% endblock left_sidebar %}
+
+    </div>
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+    <script src="/static/newsfeed/vendor/jquery/jquery.min.js"></script>
+    <script src="/static/newsfeed/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="/static/newsfeed/assets/js/browser.min.js"></script>
+    <script src="/static/newsfeed/assets/js/breakpoints.min.js"></script>
+    <script src="/static/newsfeed/assets/js/transition.js"></script>
+    <script src="/static/newsfeed/assets/js/owl-carousel.js"></script>
+    <script src="/static/newsfeed/assets/js/custom.js"></script>
+</body>
+
+
+  </body>
+
+</html>

@@ -23,3 +23,8 @@ def transparency(request):
     context={}
     template = loader.get_template('newsfeed/transparency.html')
     return HttpResponse(template.render(context,request))
+
+def consensus(request):
+    context={}
+    template = loader.get_template('newsfeed/consensus.html')
+    return HttpResponse(template.render(context,request))
