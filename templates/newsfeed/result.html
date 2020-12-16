@@ -58,36 +58,32 @@
             </div> 
 
 {% block content %}
-              <section class="simple-post">
-              <div class="container-fluid">
-              
-               <div class="row">
-                  <div class="col-lg-4">
-						<h2>News 1</h2>
-                      <p>Aliquam sit amet gravida tellus. Phasellus id erat nec mi ullamcorper viverra. Quisque vitae pharetra sem. Maecenas sit amet velit ultrices, malesuada quam id, porta nisl.</p>
-                      <br>
-
-                  </div>
-                  <div class="col-lg-4">
-						<h2>News 2</h2>
-                      <p>Donec et massa at dolor condimentum ornare nec non lorem. Maecenas non egestas metus, sed ultricies lectus. Aliquam sit amet gravida tellus. Phasellus id erat nec mi ullamcorper viverra.</p>
-                      <br>
-
-                  </div>
-                  <div class="col-lg-4">
-						<h2>News 3</h2>
-                      <p>Quisque sodales vestibulum arcu porttitor finibus. Phasellus dictum nisl id augue ornare, vel interdum nibh mollis. Aliquam sit amet gravida tellus.</p>
-
-                  </div>
-                </div>
+            <section class="simple-post">
+                <div class="container-fluid">
+                    
+{% if all_news %}
+    {% for news in all_news %}
+        <ul>
+        <div class="row">
+            <div class="col-lg-10">
+                <h2>{{ news.title }}</h2>
+                <p>{{ news.body }}</p>
+            </div>
+        </div>
+        </ul>
+    {% endfor %}
+    <br>
+{% else %}
+    <p>No news are available.</p>
+{% endif %}
                 
-                <div class="col-md-12">
-                    <div class="border-rounded-button">
-                        <a href="#">I approve this recommendation</a>
+                    <div class="col-md-12">
+                        <div class="border-rounded-button">
+                            <a href="#">I approve this recommendation</a>
+                        </div>
                     </div>
                 </div>
-              </div>
-              </section>
+          </section>
 
 
             <div class="page-heading">
