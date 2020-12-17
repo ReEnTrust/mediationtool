@@ -4,9 +4,9 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    path('index.html',views.index, name='index'),
-    path('result.html',views.result, name='result'),
-    path('privacy.html',views.privacy, name='privacy'),
+    path('index.html',views.IndexView.as_view(), name='index'),
+    path('result.html',views.ResultView.as_view(), name='result'),
+    path('privacy.html',views.PrivacyView.as_view(), name='privacy'),
     path('transparency.html',views.transparency, name='transparency'),
     path('personal.html',views.transparency, name='personal'),
     path('consensus.html',views.transparency, name='consensus'),

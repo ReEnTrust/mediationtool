@@ -63,6 +63,23 @@ https://templatemo.com/tm-529-ramayana
             
         <br>
   
+<form method="post">
+{% csrf_token %}
+    <input type="checkbox" name="age" id="id_age" checked>
+    <label for="id_age">I want to hide age</label><br>
+    <input type="checkbox" name="gender" id="id_gender" checked>
+    <label for="id_gender">I want to hide gender</label><br>
+<br>
+<input type="submit" value="Update">
+</form>
+
+<form method="reset">
+{% csrf_token %}
+<button type="submit">Reset settings</button>
+</form>
+
+
+
 <div class="container emp-profile">
             <form method="post">
                 <div class="row">
@@ -184,27 +201,23 @@ https://templatemo.com/tm-529-ramayana
 
             <section class="buttons">
               <div class="container-fluid">
-                <div class="row">
-                  <div class="col-md-6">
                     <div class="row">
-                      <div class="col-md-6">
+                      <div class="col-md-3">
                         <div class="border-rounded-button">
                           <a href="#">User's age should be hidden</a>
                         </div>
                       </div>
-                      <div class="col-md-6">
+                      <div class="col-md-3">
                         <div class="border-rounded-button">
                           <a href="#">User's gender should be hidden</a>
                         </div>
                       </div>
-                      <div class="col-md-6">
+                      <div class="col-md-3">
                         <div class="border-rounded-button">
                           <a href="#">Reset settings</a>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
               </div>
             </section>
 
