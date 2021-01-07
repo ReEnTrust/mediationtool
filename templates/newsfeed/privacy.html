@@ -66,19 +66,16 @@ https://templatemo.com/tm-529-ramayana
 <form method="post">
 {% csrf_token %}
     <input type="checkbox" name="age" id="id_age" checked>
-    <label for="id_age">I want to hide age</label><br>
+    <label for="id_age">I want age to be used</label><br>
     <input type="checkbox" name="gender" id="id_gender" checked>
-    <label for="id_gender">I want to hide gender</label><br>
+    <label for="id_gender">I want gender to be used</label><br>
 <br>
-<input type="submit" value="Update">
-</form>
-
-<form method="reset">
-{% csrf_token %}
-<button type="submit">Reset settings</button>
+<button type="submit">Result</button>
 </form>
 
 
+<br>
+<br>
 
 <div class="container emp-profile">
             <form method="post">

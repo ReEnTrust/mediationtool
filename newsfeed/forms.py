@@ -1,16 +1,17 @@
 from django import forms
 
 
-class UserForm(forms.Form):
-    age = forms.BooleanField(label='Age')
-    gender = forms.BooleanField(label='Gender')
+class UserFormPrivacy(forms.Form):
+    age = forms.BooleanField(label='age', required=False)
+    gender = forms.BooleanField(label='gender', required=False)
+
+class UserFormTransparency(forms.Form):
     ALGO_CHOICES = [
-        (1, 'Algorithm 1'),
-        (2, 'Algorithm 2'),
-        (3, 'Algorithm 3'),
+        ('algoA', 'algoA'),
+        ('algoB', 'algoB'),
+        ('algoC', 'algoC'),
     ]
     algo = forms.ChoiceField(choices = ALGO_CHOICES, label="algo", widget=forms.RadioSelect, required=True)
-
 
 class LogForm(forms.Form):
     dataInstance = forms.CharField(label='DataInstance')

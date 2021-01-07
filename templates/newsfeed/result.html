@@ -51,7 +51,26 @@
                 <div class="row">
                   <div class="col-md-12">
                     <h1>Personalised results</h1>
-                    <p><strong>These results</strong> are given according to your settings and choices.</p>
+                    <p><strong>These results</strong> are given according to your settings and choices:              
+                <ul>
+
+                {% if config_age %}
+                    <li>Age</li>
+                {% endif %}
+                {% if config_gender %}
+                    <li>Gender</li>
+                {% endif %}
+                {% if config_algoA %}
+                    <li>Algorithm A</li>
+                {% endif %}
+                {% if config_algoB %}
+                    <li>Algorithm B</li>
+                {% endif %}
+                {% if config_algoC %}
+                    <li>Algorithm C</li>
+                {% endif %}
+              </ul>
+</p>
                   </div>
                 </div>
               </div>

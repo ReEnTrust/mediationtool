@@ -83,27 +83,24 @@ https://templatemo.com/tm-529-ramayana
                 
               </div>
               <br>
-              <div class="container-fluid">
               
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="border-rounded-button">
-                            <a href="#">I prefer this algorithm</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="border-rounded-button">
-                            <a href="#">I prefer this algorithm</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="border-rounded-button">
-                            <a href="#">I prefer this algorithm</a>
-                        </div>
-                    </div>
-                </div>
+
+
+<form method="post">
+{% csrf_token %}
+    <input type="radio" name="algo" id="id_algoA" value="algoA">
+    <label for="id_algoA">I want algorithm A to be used</label><br>
+    <input type="radio" name="algo" id="id_algoB" value="algoB">
+    <label for="id_algoB">I want algorithm B to be used</label><br>
+    <input type="radio" name="algo" id="id_algoC" value="algoC">
+    <label for="id_algoC">I want algorithm C to be used</label><br>
+<br>
+<button type="submit">Result</button>
+</form>
+
+             
                 
-              </div>
+
 
               </section>
           </div>
