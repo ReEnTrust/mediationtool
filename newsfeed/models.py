@@ -29,6 +29,8 @@ class News(models.Model):
 class LogInstance(models.Model):
     log_instance_creation_date = models.DateTimeField(auto_now_add=True)
     log_identification_string = models.CharField(max_length=200, default='not provided')
+
+
     def __str__(self):
         return str(self.id)+" "+str(self.log_instance_creation_date)
 
@@ -41,7 +43,9 @@ class Configuration(models.Model):
     algoA=models.BooleanField(default=True)
     algoB=models.BooleanField(default=True)
     algoC=models.BooleanField(default=True)
-    approved=models.IntegerField()
+    approved=models.IntegerField(default=0)
+    unapproved=models.IntegerField(default=0)
+    total_votes=models.IntegerField(default=0)
 
 
 #    def __init__(self,a,g,alA,alB,alC):
@@ -67,6 +71,14 @@ class Configuration(models.Model):
 
     def approve(self):
         self.approved+=1
+        self.totale_votes+=1
+        self.save()
+
+    def unapprove(self):
+        self.unapproved+=1
+        self.totale_votes+=1
+        self.save()
+
 
     def get_activated_config(self):
         all_config = Configuration.all_config.all()

@@ -45,82 +45,49 @@
             {% endblock header_wrapper %}
 
             <!-- Page Heading -->
-            <div class="page-heading">
-              <div class="container-fluid">
-                <div class="row">
-                  <div class="col-md-12">
-                    <h1>Default results</h1>
-                    <p><strong>These results</strong> are given to users about who we don't know anything. They content sponsorised articles as well as the most popular in the latest ones. If you want a more personalised recommendation, you need to explore the other tabs and give us the information you want us to take into account.</p>
-                  </div>
-                </div>
-              </div>
-            </div> 
+            
 
 {% block content %}
-              <section class="simple-post">
-              <div class="container-fluid">
               
-               <div class="row">
-                  <div class="col-lg-4">
-						<h2>News 1</h2>
-                      <p>Aliquam sit amet gravida tellus. Phasellus id erat nec mi ullamcorper viverra. Quisque vitae pharetra sem. Maecenas sit amet velit ultrices, malesuada quam id, porta nisl.</p>
-                      <br>
+            
+{% if all_config %}
+    {% for config in all_config %}
 
-                  </div>
-                  <div class="col-lg-4">
-						<h2>News 2</h2>
-                      <p>Donec et massa at dolor condimentum ornare nec non lorem. Maecenas non egestas metus, sed ultricies lectus. Aliquam sit amet gravida tellus. Phasellus id erat nec mi ullamcorper viverra.</p>
-                      <br>
-
-                  </div>
-                  <div class="col-lg-4">
-						<h2>News 3</h2>
-                      <p>Quisque sodales vestibulum arcu porttitor finibus. Phasellus dictum nisl id augue ornare, vel interdum nibh mollis. Aliquam sit amet gravida tellus.</p>
-
-                  </div>
-                </div>
-                
-              </div>
-              </section>
-
-
-            <div class="page-heading">
-              <div class="container-fluid">
-                <div class="row">
-                  <div class="col-md-12">
-                    <h1>Personalised results</h1>
-                    <p><strong>These results</strong> are given according to your settings and choices.</p>
-                  </div>
-                </div>
-              </div>
-            </div> 
+                <ul>
+                {% if config.age %}
+                    <li>Age</li>
+                {% endif %}
+                {% if config.gender %}
+                    <li>Gender</li>
+                {% endif %}
+                {% if config.algoA %}
+                    <li>Algorithm A</li>
+                {% endif %}
+                {% if config.algoB %}
+                    <li>Algorithm B</li>
+                {% endif %}
+                {% if config.algoC %}
+                    <li>Algorithm C</li>
+                {% endif %}
+              </ul>
+        <ul>
+        <div class="row">
+            <div class="col-lg-10">
+                <h2>Approval ratio: {{ config.approved }}/{{ config.total_votes }}</h2>
+                <p>Unapproval ratio:{{ config.unapproved }}/{{ config.total_votes }}</p>
+            </div>
+        </div>
+        </ul>
 
 
-              <section class="simple-post">
-              <div class="container-fluid">
-              
-               <div class="row">
-                  <div class="col-lg-4">
-						<h2>News 1</h2>
-                      <p>Aliquam sit amet gravida tellus. Phasellus id erat nec mi ullamcorper viverra. Quisque vitae pharetra sem. Maecenas sit amet velit ultrices, malesuada quam id, porta nisl.</p>
-                      <br>
+    {% endfor %}
+    <br>
+{% else %}
+    <p>No news are available.</p>
+{% endif %}
 
-                  </div>
-                  <div class="col-lg-4">
-						<h2>News 2</h2>
-                      <p>Donec et massa at dolor condimentum ornare nec non lorem. Maecenas non egestas metus, sed ultricies lectus. Aliquam sit amet gravida tellus. Phasellus id erat nec mi ullamcorper viverra.</p>
-                      <br>
 
-                  </div>
-                  <div class="col-lg-4">
-						<h2>News 3</h2>
-                      <p>Quisque sodales vestibulum arcu porttitor finibus. Phasellus dictum nisl id augue ornare, vel interdum nibh mollis. Aliquam sit amet gravida tellus.</p>
 
-                  </div>
-                </div>
-                
-              </div>
-              </section>
 {% endblock content %}
 
 

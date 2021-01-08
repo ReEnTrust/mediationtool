@@ -74,6 +74,17 @@ https://templatemo.com/tm-529-ramayana
             </section>
             {% endblock banner_wrapper %}
 
+                    <form method="post">
+                        {% csrf_token %}
+
+                        <div class="col-4 col-12-small user-input-parameter age-class" style="padding: 1em; margin-top: 1em;">
+                            <label for="id_dataInstance">IDENTIFICATION CODE</label>
+                            <input type="text" name="dataInstance" required="" id="id_dataInstance">
+                        </div>
+
+                        <button type="submit" style="font-size: 100%;" >Start mediation</button>
+                    </form>
+
            <!-- Services -->
             <section class="services">
               <div class="container-fluid">
@@ -163,11 +174,6 @@ https://templatemo.com/tm-529-ramayana
             <nav id="menu">
               <ul>
                 <li><a href="index.html">Homepage</a></li>
-                <li><a href="result.html">Result</a></li>
-                <li><a href="privacy.html">Privacy</a></li>
-                <li><a href="transparency.html">Transparency</a></li>
-                <li><a href="personal.html">Personal view</a></li>
-                <li><a href="consensus.html">Consensus</a></li>
               </ul>
             </nav>
 

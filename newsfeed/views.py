@@ -6,11 +6,13 @@ from django.template import loader
 from django.views import View
 from .forms import UserFormPrivacy
 from .forms import UserFormTransparency
+from .forms import ApproveForm
 from .forms import FeedbackForm
 from .forms import LogForm
 
 from .models import News
 from .models import Configuration
+from .models import LogInstance
 
 # Create your views here.
 
@@ -18,6 +20,8 @@ from .models import Configuration
 
 # config = age, gender, algoA, algoB, algoC
 current_config=[True,True,True,True,True]
+
+
 
 class IndexView(View):
     def get(self, request):
@@ -31,10 +35,9 @@ class IndexView(View):
         print(form.errors)
         newLogInstance = LogInstance(log_identification_string=dataInstance)
         newLogInstance.save()
-        
+        return redirect('result.html')
 
 class ResultView(View):
-
     def get(self, request):
         all_news = News.all_news.all()
         all_config = Configuration.all_config.all()
@@ -47,20 +50,27 @@ class ResultView(View):
         for n in all_news:
             if n.fit_config(current_config):
                 news.append(n)
-        activated_config.print_config("!!! in result view")
+        #activated_config.print_config("!!! in result view")
         #context={'all_news': news[0:3], 'config_age': current_config[0], 'config_gender': current_config[1], 'config_algoA': current_config[2], 'config_algoB': current_config[3], 'config_algoC': current_config[4]}
         context={'all_news': news[0:3], 'config_age': activated_config.age, 'config_gender': activated_config.gender, 'config_algoA': activated_config.algoA, 'config_algoB': activated_config.algoB, 'config_algoC': activated_config.algoC}
         return render(request, 'newsfeed/result.html', context)
 
     def post(self,request):
         form = ApproveForm(data = request.POST) 
+        all_config = Configuration.all_config.all()
+        for config in all_config:
+            if config.is_activated():
+                activated_config = config
         if form.is_valid():
             approved = form.cleaned_data.get('approve')
             if approved=="yes":
                 print("yes")
+                current_config.approve()
             if approved=="no":
                 print("no")
-        
+                current_config.approve()
+        #approving_count+=1
+        return redirect('result.html')
 
 #def view_test(request, pk):
 #    Configuration.objects.filter(activated=True).unactivate()
@@ -153,7 +163,13 @@ def personal(request):
     template = loader.get_template('newsfeed/personal.html')
     return HttpResponse(template.render(context,request))
 
-def consensus(request):
-    context={}
-    template = loader.get_template('newsfeed/consensus.html')
-    return HttpResponse(template.render(context,request))
+class ConsensusView(View):
+    def get(self, request):
+        all_config = Configuration.all_config.all()
+        context={'all_config': all_config}
+        
+        return render(request, 'newsfeed/consensus.html', context)
+
+
+
+

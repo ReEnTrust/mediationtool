@@ -53,7 +53,6 @@
                     <h1>Personalised results</h1>
                     <p><strong>These results</strong> are given according to your settings and choices:              
                 <ul>
-
                 {% if config_age %}
                     <li>Age</li>
                 {% endif %}
@@ -101,16 +100,12 @@ Do you approve this recommendation?
 {% csrf_token %}
     <input type="radio" name="approve" id="id_yes" value="yes">
     <label for="id_yes">Yes</label><br>
-    <input type="radio" name="approve" id="no" value="no">
+    <input type="radio" name="approve" id="id_no" value="no">
     <label for="id_no">No</label><br>
 <br>
 <button type="submit">Submit</button>
 </form>                
-                    <div class="col-md-12">
-                        <div class="border-rounded-button">
-                            <a href="#">I approve this recommendation</a>
-                        </div>
-                    </div>
+
                 </div>
           </section>
 

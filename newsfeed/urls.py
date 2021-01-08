@@ -9,6 +9,6 @@ urlpatterns = [
     path('privacy.html',views.PrivacyView.as_view(), name='privacy'),
     path('transparency.html',views.TransparencyView.as_view(), name='transparency'),
     path('personal.html',views.TransparencyView.as_view(), name='personal'),
-    path('consensus.html',views.TransparencyView.as_view(), name='consensus'),
+    path('consensus.html',views.ConsensusView.as_view(), name='consensus'),
     url(r'^favicon\.ico$',RedirectView.as_view(url='/static/images/favicon.ico')),
 ]
