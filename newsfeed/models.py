@@ -26,6 +26,12 @@ class News(models.Model):
         #return self.age==config.age and self.gender==config.gender and self.algoA==config.algoA and self.algoB == config.algoB and self.algoC == config.algoC
         return self.age==config[0] and self.gender==config[1] and self.algoA==config[2] and self.algoB == config[3] and self.algoC == config[4]
 
+class LogInstance(models.Model):
+    log_instance_creation_date = models.DateTimeField(auto_now_add=True)
+    log_identification_string = models.CharField(max_length=200, default='not provided')
+    def __str__(self):
+        return str(self.id)+" "+str(self.log_instance_creation_date)
+
 class Configuration(models.Model):
 #    _instances = []
     all_config = models.Manager()
@@ -35,7 +41,7 @@ class Configuration(models.Model):
     algoA=models.BooleanField(default=True)
     algoB=models.BooleanField(default=True)
     algoC=models.BooleanField(default=True)
-    approved=models.BooleanField(default=False)
+    approved=models.IntegerField()
 
 
 #    def __init__(self,a,g,alA,alB,alC):
@@ -60,7 +66,7 @@ class Configuration(models.Model):
         self.activated=False
 
     def approve(self):
-        self.approve=True
+        self.approved+=1
 
     def get_activated_config(self):
         all_config = Configuration.all_config.all()
@@ -81,6 +87,8 @@ class Configuration(models.Model):
                             if self.algoC==config.algoC:
                                 config.activate()
                                 self.unactivate()
+                                config.save()
+                                self.save()
                                 return config
 
 #        config=Configuration(not self.age, self.gender, self.algoA, self.algoB, self.algoC)
@@ -96,6 +104,8 @@ class Configuration(models.Model):
                                 config.activate()
                                 self.unactivate()
                                 config.print_config()
+                                config.save()
+                                self.save()
                                 return config
                                 
 #        config=Configuration(self.age, not self.gender, self.algoA, self.algoB, self.algoC)
@@ -106,11 +116,11 @@ class Configuration(models.Model):
             if self.age==config.age:
                 if self.gender==config.gender:
                     if self.algoA!=config.algoA:
-                        if self.algoB==config.algoB:
-                            if self.algoC==config.algoC:
-                                config.activate()
-                                self.unactivate()
-                                return config
+                        config.activate()
+                        self.unactivate()
+                        config.save()
+                        self.save()
+                        return config
 #        config=Configuration(self.age, self.gender, not self.algoA, self.algoB, self.algoC)
 #        return config 
 
@@ -118,12 +128,13 @@ class Configuration(models.Model):
         for config in Configuration.all_config.all():
             if self.age==config.age:
                 if self.gender==config.gender:
-                    if self.algoA==config.algoA:
-                        if self.algoB!=config.algoB:
-                            if self.algoC==config.algoC:
-                                config.activate()
-                                self.unactivate()
-                                return config
+                    if self.algoB!=config.algoB:
+                        config.activate()
+                        self.unactivate()
+                        config.save()
+                        self.save()
+                        print("ALGO CHANGED FOR B")
+                        return config
 #        config=Configuration(self.age, self.gender, self.algoA, not self.algoB, self.algoC)
 #        return config 
 
@@ -131,12 +142,12 @@ class Configuration(models.Model):
         for config in Configuration.all_config.all():
             if self.age==config.age:
                 if self.gender==config.gender:
-                    if self.algoA==config.algoA:
-                        if self.algoB==config.algoB:
-                            if self.algoC!=config.algoC:
-                                config.activate()
-                                self.unactivate()
-                                return config
+                    if self.algoC!=config.algoC:
+                        config.activate()
+                        self.unactivate()
+                        config.save()
+                        self.save()
+                        return config
 #        config=Configuration(self.age, self.gender, self.algoA, self.algoB, not self.algoC)
 #        return config 
 

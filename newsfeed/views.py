@@ -24,22 +24,43 @@ class IndexView(View):
         context={}
         return render(request, 'newsfeed/index.html', context)
 
+    def post(self, request):
+        form = LogForm(data = request.POST)
+        if form.is_valid():
+            dataInstance = form.cleaned_data.get('dataInstance')
+        print(form.errors)
+        newLogInstance = LogInstance(log_identification_string=dataInstance)
+        newLogInstance.save()
+        
+
 class ResultView(View):
 
     def get(self, request):
         all_news = News.all_news.all()
-        #activated_config = all_config[0]
-        #for config in all_config:
-        #    if config.is_activated():
-        #        activated_config = config
+        all_config = Configuration.all_config.all()
+        for config in all_config:
+            if config.is_activated():
+                activated_config = config
                 #print("result get method")
-                #activated_config.print_config()                
+                #activated_config.print_config("!!! in result view")                
         news = []
         for n in all_news:
             if n.fit_config(current_config):
                 news.append(n)
-        context={'all_news': news[0:3], 'config_age': current_config[0], 'config_gender': current_config[1], 'config_algoA': current_config[2], 'config_algoB': current_config[3], 'config_algoC': current_config[4]}
+        activated_config.print_config("!!! in result view")
+        #context={'all_news': news[0:3], 'config_age': current_config[0], 'config_gender': current_config[1], 'config_algoA': current_config[2], 'config_algoB': current_config[3], 'config_algoC': current_config[4]}
+        context={'all_news': news[0:3], 'config_age': activated_config.age, 'config_gender': activated_config.gender, 'config_algoA': activated_config.algoA, 'config_algoB': activated_config.algoB, 'config_algoC': activated_config.algoC}
         return render(request, 'newsfeed/result.html', context)
+
+    def post(self,request):
+        form = ApproveForm(data = request.POST) 
+        if form.is_valid():
+            approved = form.cleaned_data.get('approve')
+            if approved=="yes":
+                print("yes")
+            if approved=="no":
+                print("no")
+        
 
 #def view_test(request, pk):
 #    Configuration.objects.filter(activated=True).unactivate()
@@ -60,28 +81,30 @@ class PrivacyView(View):
 
     def post(self, request): 
         form = UserFormPrivacy(data = request.POST)
-        #for config in all_config:
-        #    if config.is_activated():
-        #        activated_config = config
-        #activated_config.print_config()
+        all_config = Configuration.all_config.all()
+        for config in all_config:
+            if config.is_activated():
+                activated_config = config
+        #activated_config.print_config("before sending form")
         if form.is_valid():
             age=form.cleaned_data.get('age')
             gender=form.cleaned_data.get('gender')
-            if age:
+            if age and not activated_config.age:
                 current_config[0]=True
-                #activated_config=activated_config.change_config_age()
+                activated_config=activated_config.change_config_age()
+                #activated_config.save()                
                 #activated_config.print_config("age has been disabled")
-            else:            
+            if not age:           
+                activated_config=activated_config.change_config_age()
+                #activated_config.save() 
                 current_config[0]=False
-            if gender:
+            if gender and not activated_config.gender:
                 current_config[1]=True
-            else:
+                activated_config=activated_config.change_config_gender()
+            if not gender:
                 current_config[1]=False
-                #activated_config=activated_config.change_config_gender()
-        #activated_config.print_config("config activated at this point")
-        #for config in all_config:
-        #    if config.is_activated():
-        #        config.print_config("[!!!] privacy post method")
+                activated_config=activated_config.change_config_gender()
+
         return redirect('result.html')
 
 
@@ -96,17 +119,26 @@ class TransparencyView(View):
 
     def post(self,request):
         form = UserFormTransparency(data = request.POST)
+        all_config = Configuration.all_config.all()
+        for config in all_config:
+            if config.is_activated():
+                activated_config = config
+        
         if form.is_valid():
             algo = form.cleaned_data.get('algo')
             if algo=="algoA":
+                activated_config=activated_config.change_config_algoA()
                 current_config[2]=True
                 current_config[3]=False
                 current_config[4]=False
             if algo=="algoB":
+                activated_config=activated_config.change_config_algoB()
+                activated_config.print_config("algoB selected")
                 current_config[2]=False
                 current_config[3]=True
                 current_config[4]=False
             if algo=="algoC":
+                activated_config=activated_config.change_config_algoC()
                 current_config[2]=False
                 current_config[3]=False
                 current_config[4]=True

@@ -95,7 +95,17 @@
 {% else %}
     <p>No news are available.</p>
 {% endif %}
-                
+ <br>
+Do you approve this recommendation?
+<form method="post">
+{% csrf_token %}
+    <input type="radio" name="approve" id="id_yes" value="yes">
+    <label for="id_yes">Yes</label><br>
+    <input type="radio" name="approve" id="no" value="no">
+    <label for="id_no">No</label><br>
+<br>
+<button type="submit">Submit</button>
+</form>                
                     <div class="col-md-12">
                         <div class="border-rounded-button">
                             <a href="#">I approve this recommendation</a>
