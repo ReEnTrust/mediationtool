@@ -65,10 +65,10 @@ class ResultView(View):
             approved = form.cleaned_data.get('approve')
             if approved=="yes":
                 print("yes")
-                current_config.approve()
+                activated_config.approve()
             if approved=="no":
                 print("no")
-                current_config.approve()
+                activated_config.unapprove()
         #approving_count+=1
         return redirect('result.html')
 

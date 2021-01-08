@@ -14,8 +14,11 @@ class UserFormTransparency(forms.Form):
     algo = forms.ChoiceField(choices = ALGO_CHOICES, label="algo", widget=forms.RadioSelect, required=True)
 
 class ApproveForm(forms.Form):
-    yes = forms.BooleanField(label='yes', required=False)
-    no = forms.BooleanField(label='no', required=False)
+    APPROVE_CHOICES = [
+        ('yes', 'yes'),
+        ('no', 'no'),
+    ]
+    approve = forms.ChoiceField(choices = APPROVE_CHOICES, label="approve", widget=forms.RadioSelect, required=True)
 
 class LogForm(forms.Form):
     dataInstance = forms.CharField(label='DataInstance')

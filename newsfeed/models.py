@@ -58,7 +58,7 @@ class Configuration(models.Model):
 #        self.algoC=alC
 
     def print_config(self, s=""):
-        print("print located in: "+s+"\nACTIVATED: "+str(self.activated)+"\n age: "+str(self.age)+", gender: "+str(self.gender)+", algoA: "+str(self.algoA)+", algoB: "+str(self.algoB)+", algoC: "+str(self.algoC))
+        print("print located in: "+s+"\nACTIVATED: "+str(self.activated)+"\n age: "+str(self.age)+", gender: "+str(self.gender)+", algoA: "+str(self.algoA)+", algoB: "+str(self.algoB)+", algoC: "+str(self.algoC)+" approval ratio:"+str(self.approved)+"/"+str(self.total_votes))
 
     def is_activated(self):
         return self.activated
@@ -71,12 +71,13 @@ class Configuration(models.Model):
 
     def approve(self):
         self.approved+=1
-        self.totale_votes+=1
+        self.total_votes+=1
+        self.print_config("approve method")
         self.save()
 
     def unapprove(self):
         self.unapproved+=1
-        self.totale_votes+=1
+        self.total_votes+=1
         self.save()
 
 
