@@ -98,6 +98,7 @@
 Do you approve this recommendation?
 <form method="post">
 {% csrf_token %}
+    
     <input type="radio" name="approve" id="id_yes" value="yes">
     <label for="id_yes">Yes</label><br>
     <input type="radio" name="approve" id="id_no" value="no">

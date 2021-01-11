@@ -26,13 +26,7 @@ class News(models.Model):
         #return self.age==config.age and self.gender==config.gender and self.algoA==config.algoA and self.algoB == config.algoB and self.algoC == config.algoC
         return self.age==config[0] and self.gender==config[1] and self.algoA==config[2] and self.algoB == config[3] and self.algoC == config[4]
 
-class LogInstance(models.Model):
-    log_instance_creation_date = models.DateTimeField(auto_now_add=True)
-    log_identification_string = models.CharField(max_length=200, default='not provided')
 
-
-    def __str__(self):
-        return str(self.id)+" "+str(self.log_instance_creation_date)
 
 class Configuration(models.Model):
 #    _instances = []
@@ -164,6 +158,22 @@ class Configuration(models.Model):
 #        config=Configuration(self.age, self.gender, self.algoA, self.algoB, not self.algoC)
 #        return config 
 
+
+class LogInstance(models.Model):
+    log_instance_creation_date = models.DateTimeField(auto_now_add=True)
+    log_identification_string = models.CharField(max_length=200, default='not provided')
+
+    def __str__(self):
+        return str(self.id)+" "+str(self.log_instance_creation_date)
+
+
+class LogAction(models.Model):
+    log_action_date = models.DateTimeField(auto_now_add=True)
+    log_instance_id = models.CharField(max_length=2000)
+    log_action_description = models.CharField(max_length=2000)
+    log_config = models.ForeignKey(Configuration, on_delete=models.CASCADE)
+    def __str__(self):
+        return str(self.log_instance_id)+"|"+str(self.log_action_description)+"|"+str(self.log_action_date)+"|"+str(self.log_config_id)
 
 
 

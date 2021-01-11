@@ -13,6 +13,7 @@ from .forms import LogForm
 from .models import News
 from .models import Configuration
 from .models import LogInstance
+from .models import LogAction
 
 # Create your views here.
 
@@ -35,10 +36,10 @@ class IndexView(View):
         print(form.errors)
         newLogInstance = LogInstance(log_identification_string=dataInstance)
         newLogInstance.save()
-        return redirect('result.html')
+        return redirect('result', DataInstance=dataInstance)
 
 class ResultView(View):
-    def get(self, request):
+    def get(self, request, DataInstance):
         all_news = News.all_news.all()
         all_config = Configuration.all_config.all()
         for config in all_config:
@@ -55,8 +56,10 @@ class ResultView(View):
         context={'all_news': news[0:3], 'config_age': activated_config.age, 'config_gender': activated_config.gender, 'config_algoA': activated_config.algoA, 'config_algoB': activated_config.algoB, 'config_algoC': activated_config.algoC}
         return render(request, 'newsfeed/result.html', context)
 
-    def post(self,request):
+    def post(self,request, DataInstance):
         form = ApproveForm(data = request.POST) 
+        #instance = request.POST.__getitem__('data-instance')
+        instance= DataInstance
         all_config = Configuration.all_config.all()
         for config in all_config:
             if config.is_activated():
@@ -66,11 +69,15 @@ class ResultView(View):
             if approved=="yes":
                 print("yes")
                 activated_config.approve()
+                NewLogAction = LogAction(log_instance_id = instance,log_action_description = "yes", log_config = activated_config)
+                NewLogAction.save()
             if approved=="no":
                 print("no")
                 activated_config.unapprove()
+                NewLogAction = LogAction(log_instance_id = instance,log_action_description = "no", log_config = activated_config)
+                NewLogAction.save()
         #approving_count+=1
-        return redirect('result.html')
+        return redirect('personal', DataInstance)
 
 #def view_test(request, pk):
 #    Configuration.objects.filter(activated=True).unactivate()
@@ -78,7 +85,7 @@ class ResultView(View):
 
 
 class PrivacyView(View):
-    def get(self, request):
+    def get(self, request, DataInstance):
         #for config in all_config:
         #    if config.is_activated():
         #        activated_config = config
@@ -89,13 +96,13 @@ class PrivacyView(View):
         context={}
         return render(request, 'newsfeed/privacy.html', context)
 
-    def post(self, request): 
+    def post(self, request, DataInstance): 
         form = UserFormPrivacy(data = request.POST)
         all_config = Configuration.all_config.all()
         for config in all_config:
             if config.is_activated():
                 activated_config = config
-        #activated_config.print_config("before sending form")
+        activated_config.print_config("before sending form")
         if form.is_valid():
             age=form.cleaned_data.get('age')
             gender=form.cleaned_data.get('gender')
@@ -115,7 +122,7 @@ class PrivacyView(View):
                 current_config[1]=False
                 activated_config=activated_config.change_config_gender()
 
-        return redirect('result.html')
+        return redirect('result', DataInstance)
 
 
 class TransparencyView(View):
@@ -123,11 +130,11 @@ class TransparencyView(View):
 #    for config in all_config:
 #        if config.is_activated():
 #            activated_config = config
-    def get(self,request):
+    def get(self, request, DataInstance):
         context={}
         return render(request, 'newsfeed/transparency.html', context)
 
-    def post(self,request):
+    def post(self, request, DataInstance):
         form = UserFormTransparency(data = request.POST)
         all_config = Configuration.all_config.all()
         for config in all_config:
@@ -154,17 +161,27 @@ class TransparencyView(View):
                 current_config[4]=True
 
 
-        return redirect('result.html')
+        return redirect('result', DataInstance)
     
 
 
-def personal(request):
-    context={}
-    template = loader.get_template('newsfeed/personal.html')
-    return HttpResponse(template.render(context,request))
+class PersonalView(View):
+    def get(self, request, DataInstance):    
+        context={}
+        all_config = Configuration.all_config.all()
+        list_yes=[]
+        list_no=[]
+        list_actions_instance = LogAction.objects.filter(log_instance_id = DataInstance)
+        for action in list_actions_instance:
+            if action.log_action_description=='yes':
+                list_yes.append(action.log_config)
+            else:
+                list_no.append(action.log_config)
+        context={'config_yes': list_yes, 'config_no': list_no}
+        return render(request, 'newsfeed/personal.html', context)
 
 class ConsensusView(View):
-    def get(self, request):
+    def get(self, request, DataInstance):
         all_config = Configuration.all_config.all()
         context={'all_config': all_config}
         

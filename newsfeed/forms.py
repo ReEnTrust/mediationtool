@@ -23,6 +23,8 @@ class ApproveForm(forms.Form):
 class LogForm(forms.Form):
     dataInstance = forms.CharField(label='DataInstance')
 
+class LogApproveForm(forms.Form):
+    dataApprove = forms.CharField(label='DataApprove')
 
 class FeedbackForm(forms.Form):
     comment= forms.CharField(widget=forms.Textarea, required=False)
