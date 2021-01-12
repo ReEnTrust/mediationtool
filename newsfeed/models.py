@@ -7,11 +7,11 @@ class News(models.Model):
     all_news = models.Manager()
     num=models.IntegerField()
     rating=models.FloatField()
-    title=models.CharField(max_length=100)
+    title=models.CharField(max_length=1000)
     date=models.DateTimeField('date published')
     author=models.CharField(max_length=40)
     category=models.CharField(max_length=20)
-    body=models.CharField(max_length=500)
+    body=models.CharField(max_length=5000)
     default=models.BooleanField()
     age=models.BooleanField()
     gender=models.BooleanField()
@@ -24,7 +24,7 @@ class News(models.Model):
 
     def fit_config(self, config):
         #return self.age==config.age and self.gender==config.gender and self.algoA==config.algoA and self.algoB == config.algoB and self.algoC == config.algoC
-        return self.age==config[0] and self.gender==config[1] and self.algoA==config[2] and self.algoB == config[3] and self.algoC == config[4]
+        return self.age==config[0] and self.gender==config[1] and (self.algoA==config[2] or self.algoB == config[3] or self.algoC == config[4])
 
 
 
@@ -169,11 +169,11 @@ class LogInstance(models.Model):
 
 class LogAction(models.Model):
     log_action_date = models.DateTimeField(auto_now_add=True)
-    log_instance_id = models.CharField(max_length=2000)
-    log_action_description = models.CharField(max_length=2000)
+    log_instance_id = models.CharField(max_length=50)
+    log_action_description = models.CharField(max_length=20)
     log_config = models.ForeignKey(Configuration, on_delete=models.CASCADE)
+    log_comment = models.CharField(max_length=2000, null=True, blank=True)
     def __str__(self):
-        return str(self.log_instance_id)+"|"+str(self.log_action_description)+"|"+str(self.log_action_date)+"|"+str(self.log_config_id)
-
+        return str(self.log_instance_id)+"|"+str(self.log_action_description)+"|"+str(self.log_action_date)+"|"+str(self.log_config_id)+"|"+str(self.log_comment)
 
 

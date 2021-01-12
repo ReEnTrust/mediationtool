@@ -88,6 +88,7 @@
                 <p>{{ news.body }}</p>
             </div>
         </div>
+        <br>
         </ul>
     {% endfor %}
     <br>
@@ -95,14 +96,15 @@
     <p>No news are available.</p>
 {% endif %}
  <br>
-Do you approve this recommendation?
+Do you like this recommendation?
 <form method="post">
 {% csrf_token %}
-    
     <input type="radio" name="approve" id="id_yes" value="yes">
     <label for="id_yes">Yes</label><br>
     <input type="radio" name="approve" id="id_no" value="no">
     <label for="id_no">No</label><br>
+    <label for="id_comment">Give us your reason:</label>
+    <input type="text" id="id_comment" name="comment"> 
 <br>
 <button type="submit">Submit</button>
 </form>                
@@ -110,7 +112,7 @@ Do you approve this recommendation?
                 </div>
           </section>
 
-
+<!-- 
             <div class="page-heading">
               <div class="container-fluid">
                 <div class="row">
@@ -148,6 +150,7 @@ Do you approve this recommendation?
                 
               </div>
               </section>
+-->
 {% endblock content %}
 
 

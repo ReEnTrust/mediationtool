@@ -66,15 +66,17 @@ class ResultView(View):
                 activated_config = config
         if form.is_valid():
             approved = form.cleaned_data.get('approve')
+            comment = form.cleaned_data.get('comment')
+            print(comment)
             if approved=="yes":
                 print("yes")
                 activated_config.approve()
-                NewLogAction = LogAction(log_instance_id = instance,log_action_description = "yes", log_config = activated_config)
+                NewLogAction = LogAction(log_instance_id = instance,log_action_description = "yes", log_config = activated_config, log_comment = comment)
                 NewLogAction.save()
             if approved=="no":
                 print("no")
                 activated_config.unapprove()
-                NewLogAction = LogAction(log_instance_id = instance,log_action_description = "no", log_config = activated_config)
+                NewLogAction = LogAction(log_instance_id = instance,log_action_description = "no", log_config = activated_config, log_comment = comment)
                 NewLogAction.save()
         #approving_count+=1
         return redirect('personal', DataInstance)
