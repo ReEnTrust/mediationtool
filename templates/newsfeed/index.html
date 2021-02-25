@@ -74,18 +74,35 @@ https://templatemo.com/tm-529-ramayana
             </section>
             {% endblock banner_wrapper %}
 
-                    <form method="post">
-                        {% csrf_token %}
 
-                        <div class="col-4 col-12-small user-input-parameter age-class" style="padding: 1em; margin-top: 1em;">
-                            <label for="id_dataInstance">IDENTIFICATION CODE</label>
-                            <input type="text" name="dataInstance" required="" id="id_dataInstance">
-                        </div>
-
-                        <button type="submit" style="font-size: 100%;" >Start mediation</button>
-                    </form>
+<section class="simple-post">
+    <div class="container-fluid">
+        <form method="post">
+            {% csrf_token %}
+            <h1>Enter the mediation tool</h1>
+            <p> Before starting, we would like to know a little bit more about yourself.
+                Please check all the options corresponding to your opinion about newsfeed.
+                At leat one option must be checked:</p>
+            <br>
+            <input type="checkbox" name="algoA" id="id_algoA">
+            <label for="id_algoA">I usually would accept cookies</label><br>
+            <input type="checkbox" name="algoB" id="id_algoB">
+            <label for="id_algoB">I usually would create an account</label><br>
+            <input type="checkbox" name="algoC" id="id_algoC">
+            <label for="id_algoC">I usually would share my location</label><br>
+            <input type="checkbox" name="algoD" id="id_algoD">
+            <label for="id_algoD">I agree with none of these options</label><br>
+            <br>
+            <label for="id_dataInstance">IDENTIFICATION CODE: &nbsp;&nbsp;</label>
+            <input type="text" name="dataInstance" required="" id="id_dataInstance">
+            <br><br>
+            <button type="submit" style="font-size: 100%;" value="Test Required" id="checkBtn">Start mediation</button>
+        </form>
+    </div>
+</section>
 
            <!-- Services -->
+<!--
             <section class="services">
               <div class="container-fluid">
                 <div class="row">
@@ -94,9 +111,11 @@ https://templatemo.com/tm-529-ramayana
                       <div class="icon"></div>
                       <h4>Result</h4>
                       <p>This page will show you a news recommendation that is first given by default but can be updated according to your settings.</p>
+                      <br><br><br><br><br>
                       <div class="primary-button">
                         <a href="result.html">See results</a>
                       </div>
+                      <br><br>
                     </div>
                   </div>
                   <div class="col-md-4">
@@ -104,9 +123,11 @@ https://templatemo.com/tm-529-ramayana
                       <div class="icon"></div>
                       <h4>Privacy</h4>
                       <p>This page will show you the profile of the user to who the recommendation is given. You can observe the used data and the tool offers you the opportunity to modulate them.</p>
+                      <br><br><br>
                       <div class="primary-button">
                         <a href="privacy.html">Experiment with Privacy</a>
                       </div>
+                      <br>
                     </div>
                   </div>
                   <div class="col-md-4">
@@ -114,6 +135,7 @@ https://templatemo.com/tm-529-ramayana
                       <div class="icon"></div>
                       <h4>Transparency</h4>
                       <p>This page will show you the settings of the algorithm and provides an explanation for each. You will have the opportunity to change these settings and check the consequences on the result.</p>
+                      <br>
                       <div class="primary-button">
                         <a href="transparency.html">Experiment with Transparency</a>
                       </div>
@@ -122,7 +144,7 @@ https://templatemo.com/tm-529-ramayana
                 </div>
               </div>
             </section>
-
+-->
 <!--
             Top Image -->
             <section class="top-image">
@@ -132,14 +154,11 @@ https://templatemo.com/tm-529-ramayana
                     <img src="/static/newsfeed/assets/images/reentrust_logo.png" alt="">
                     <div class="down-content">
                       <h4>About</h4>
-<p>ReEnTrust is an EPSRC research project (<a href="https://gow.epsrc.ukri.org/NGBOViewGrant.aspx?GrantRef=EP/R033633/1">EP/R033633/1</a>) funded under the Trust, Identity, Privacy and Security in the Digital Economy 2.0 (<a href="https://epsrc.ukri.org/funding/calls/tips2/">TIPS2</a>) call.</p>
-
-
-
+                        <p>ReEnTrust is an EPSRC research project
+                        (<a href="https://gow.epsrc.ukri.org/NGBOViewGrant.aspx?GrantRef=EP/R033633/1">EP/R033633/1</a>)
+                        funded under the Trust, Identity, Privacy and Security in the Digital Economy 2.0
+                        (<a href="https://epsrc.ukri.org/funding/calls/tips2/">TIPS2</a>) call.</p>
 <p>The project is a collaboration between researchers from:</p>
-
-
-
 <ul>
 <li><a href="https://www.cs.ox.ac.uk/activities/HCC/" target="_blank" rel="noreferrer noopener">Human Centred Computing Group</a> at the, <a href="http://www.ox.ac.uk/" target="_blank" rel="noreferrer noopener">University of Oxford</a></li>
 <li>The <a href="http://web.inf.ed.ac.uk/cisa/" target="_blank" rel="noreferrer noopener">Centre for Intelligent Systems and their Applications (CISA)</a> at the <a href="http://www.ed.ac.uk/" target="_blank" rel="noreferrer noopener">University of Edinburgh</a></li>
@@ -169,7 +188,7 @@ https://templatemo.com/tm-529-ramayana
                 <input type="text" name="search" id="search" placeholder="Search..." />
               </form>
             </section>
-              
+
             <!-- Menu -->
             <nav id="menu">
               <ul>
@@ -180,7 +199,9 @@ https://templatemo.com/tm-529-ramayana
             <!-- Footer -->
             <footer id="footer">
               <p class="copyright">ReEnTrust 2020
-              <br>Designed based on <a rel="nofollow" href="https://www.facebook.com/templatemo">Template Mo</a></p>
+              <br>Contact: <a href = "mailto: blegaste@ed.ac.uk">blegaste@ed.ac.uk</a>
+              <br>Designed based on <a rel="nofollow" href="https://www.facebook.com/templatemo">Template Mo</a>
+              </p>
             </footer>
 
           </div>
@@ -198,6 +219,7 @@ https://templatemo.com/tm-529-ramayana
     <script src="/static/newsfeed/assets/js/transition.js"></script>
     <script src="/static/newsfeed/assets/js/owl-carousel.js"></script>
     <script src="/static/newsfeed/assets/js/custom.js"></script>
+    <script src="/static/newsfeed/assets/js/index.js"></script>
 </body>
 
 

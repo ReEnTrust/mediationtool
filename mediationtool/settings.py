@@ -25,7 +25,7 @@ SECRET_KEY = 'bw4*4h*_*8+esblv7kfo34o5-3*%qnpekesr&5xxz8nr#9v(xg'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mediationtool.pythonanywhere.com']
 
 
 # Application definition
@@ -58,12 +58,13 @@ ROOT_URLCONF = 'mediationtool.urls'
 #STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 #STATICFILES_DIRS = (
-#    os.path.join(BASE_DIR, "static_dev"), 
+#    os.path.join(BASE_DIR, "static_dev"),
     #### You can also call this assets or whatever name you want
 #)
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, '/')
+#STATIC_ROOT = '/home/mediationtool/mediationtool/static' #os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = ''
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )

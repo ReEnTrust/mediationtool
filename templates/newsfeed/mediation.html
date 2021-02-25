@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+
+    {% block site_title %}
+    <title>Mediation Tool (prototype)</title>
+    {% endblock site_title %}
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/newsfeed/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="/static/newsfeed/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="/static/newsfeed/assets/css/templatemo-style.css">
+    <link rel="stylesheet" href="/static/newsfeed/assets/css/owl.css">
+    <link rel="stylesheet" href="/static/newsfeed/assets/css/tabs.css">
+
+  </head>
+
+<body class="is-preload">
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+      <!-- Main -->
+        <div id="main">
+          <div class="inner">
+
+            {% block header_wrapper %}
+            <!-- Header -->
+            <header id="header">
+            {% block header_logo %}
+              <div class="logo">
+                <a href="">Mediation tool</a>
+              </div>
+            {% endblock header_logo %}
+            </header>
+            {% endblock header_wrapper %}
+
+            <!-- Page Heading -->
+            <div class="page-heading">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-12">
+                    <h1>What can be opposed to your opinions?</h1>
+                    <p>This page confronts your <strong>comments</strong> to arguments in favor of the opposite opinion.
+                    It means that for each likes and dislikes element, you have access to the other perspective.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+<br>
+
+
+
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'like')" id="defaultOpen">Like</button>
+  <button class="tablinks" onclick="openCity(event, 'dislike')">Dislike</button>
+</div>
+
+<div id="like" class="tabcontent">
+
+<section class="simple-post">
+<div class="container-fluid">
+{% for config in config_yes %}
+    {% if config.isA%}
+        <centre><h3>Algorithm A: when cookies are accepted</h3></centre>
+        {% if initA %}
+            You said that you usually would accept cookies
+        {% endif %}
+            <section class="services">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="service-item third-item">
+                      <div class="icon"></div>
+                      <h4>Your comment:</h4>
+                      <p>{{commA}}</p>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="service-item sixth-item">
+                      <div class="icon"></div>
+                      <h4>Opposed argument:</h4>
+                      <p>When we accept cookies, our activity on the Internet tends to be tracked
+                      in order to collect as much data as possible. These data can be used to recommend
+                      the most adapted content (newsfeed, shopping online, etc). However, users don't have
+                      guarantee to control what happens to these data, which can be sold without their
+                      consent, to other companies.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+    {% endif %}
+    {% if config.isB%}
+        {% if initB %}
+            You said that you usually would create an account
+        {% endif %}
+        <centre><h3>Algorithm B: when an account is created</h3></centre>
+            <section class="services">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="service-item third-item">
+                      <div class="icon"></div>
+                      <h4>Your comment:</h4>
+                      <p>{{commB}}</p>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="service-item sixth-item">
+                      <div class="icon"></div>
+                      <h4>Opposed argument:</h4>
+                      <p>When we create an account, we have to fill in several fields that
+                      must contact personal information. For example, websites often require us to give
+                      our name and date of birth. This is no problem for many people but sometimes
+                      users happen to want to keep such information private.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+    {% endif %}
+    {% if config.isC%}
+        {% if initC %}
+            You said that you usually would share your location
+        {% endif %}
+        <centre><h3>Algorithm C: when location is shared</h3></centre>
+            <section class="services">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="service-item third-item">
+                      <div class="icon"></div>
+                      <h4>Your comment:</h4>
+                      <p>{{commC}}</p>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="service-item sixth-item">
+                      <div class="icon"></div>
+                      <h4>Opposed argument:</h4>
+                      <p>When we are asked to share location by a website, then they can
+                      use this information to show more accurate content (local news, corner shop
+                      addresses, etc). However, it can be inconvenient to not have access to global
+                      content sometimes.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+    {% endif %}
+    {% if config.isD%}
+        {% if initD %}
+            You said that you would not accept cookies, create an account or share your location
+        {% endif %}
+        <centre><h3>Algorithm D: when no private information is given</h3></centre>
+            <section class="services">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="service-item third-item">
+                      <div class="icon"></div>
+                      <h4>Your comment:</h4>
+                      <p>{{commD}}</p>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="service-item sixth-item">
+                      <div class="icon"></div>
+                      <h4>Opposed argument:</h4>
+                      <p>Sponsored items are mostly generic since they
+                      are not based on any personal information. However, they are biased
+                      since there is always a commercial interest in showing them. </p>
+                      <p>Trending items are the result of the other users consensus, which
+                      make them more relying on popularity than on quality.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+    {% endif %}
+{% endfor %}
+</div>
+</section>
+</div>
+
+<div id="dislike" class="tabcontent">
+
+<section class="simple-post">
+<div class="container-fluid">
+{% for config in config_no %}
+    {% if config.isA%}
+        <centre><h3>Algorithm A: when cookies are accepted</h3></centre>
+        {% if initA %}
+            You said that you usually would accept cookies
+        {% endif %}
+            <section class="services">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="service-item third-item">
+                      <div class="icon"></div>
+                      <h4>Your comment:</h4>
+                      <p>{{commA}}</p>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="service-item sixth-item">
+                      <div class="icon"></div>
+                      <h4>Opposed argument:</h4>
+                      <p>Cookies are very important: they allow platforms to collect
+                      information about users' habits when they browse online. They also
+                      give access to occasional browsing, which makes the platform content
+                      accurate and up to date regarding what users would like to see.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+    {% endif %}
+    {% if config.isB%}
+        {% if initB %}
+            You said that you usually would create an account
+        {% endif %}
+        <centre><h3>Algorithm B: when an account is created</h3></centre>
+            <section class="services">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="service-item third-item">
+                      <div class="icon"></div>
+                      <h4>Your comment:</h4>
+                      <p>{{commB}}</p>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="service-item sixth-item">
+                      <div class="icon"></div>
+                      <h4>Opposed argument:</h4>
+                      <p>Creating an account is generally the best way to have the most personalised
+                      content. It is also very useful for the platform to collect such data so
+                      they can train their algorithm to recommend the best items to their users.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+    {% endif %}
+    {% if config.isC%}
+        {% if initC %}
+            You said that you usually would share your location
+        {% endif %}
+        <centre><h3>Algorithm C: when location is shared</h3></centre>
+            <section class="services">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="service-item third-item">
+                      <div class="icon"></div>
+                      <h4>Your comment:</h4>
+                      <p>{{commC}}</p>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="service-item sixth-item">
+                      <div class="icon"></div>
+                      <h4>Opposed argument:</h4>
+                      <p>When location is shared, you have the most accurate content because
+                      it is close to you. It is also quite useful to exclude content that does not concern you
+                      because most of the time, people would not click it.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+    {% endif %}
+    {% if config.isD%}
+        {% if initD %}
+            You said that you would not accept cookies, create an account or share your location
+        {% endif %}
+        <centre><h3>Algorithm D: when no private information is given</h3></centre>
+            <section class="services">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="service-item third-item">
+                      <div class="icon"></div>
+                      <h4>Your comment:</h4>
+                      <p>{{commD}}</p>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="service-item sixth-item">
+                      <div class="icon"></div>
+                      <h4>Opposed argument:</h4>
+                      <p>Sponsored items are very important for platforms: most of the time,
+                      their business model relies on advertisement, which is necessary to
+                      keep offering free service.</p>
+                      <p>In addition to sponsored items, platforms usually show trending ones.
+                      This is simply because users will tend to like items that are liked by the majority.
+                      Also the popularity of an item tends to show that it has good qualities.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+    {% endif %}
+{% endfor %}
+</div>
+</section>
+</div>
+
+          </div>
+        </div>
+
+
+
+
+
+{% block left_sidebar %}
+      <!-- Sidebar -->
+        <div id="sidebar">
+
+          <div class="inner">
+
+            <!-- Search Box -->
+            <section id="search" class="alt">
+              <form method="get" action="#">
+                <input type="text" name="search" id="search" placeholder="Search..." />
+              </form>
+            </section>
+
+            <!-- Menu -->
+            <nav id="menu">
+              <ul>
+                <li><a href="analyse.html">Personal Analysis</a></li>
+                <li><a href="votes.html">Votes Summary</a></li>
+                <li><a href="mediation.html">Mediation Process</a></a></li>
+                <li><a href="http://mediationtool.pythonanywhere.com/newsfeed/index.html">Exit</a></li>
+              </ul>
+            </nav>
+
+        {% block footer %}
+            <!-- Footer -->
+            <footer id="footer">
+              <p class="copyright">ReEnTrust 2020
+              <br>Contact: <a href = "mailto: blegaste@ed.ac.uk">blegaste@ed.ac.uk</a>
+              <br>Designed based on <a rel="nofollow" href="https://www.facebook.com/templatemo">Template Mo</a></p>
+            </footer>
+        {% endblock footer %}
+
+          </div>
+        </div>
+{% endblock left_sidebar %}
+
+    </div>
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+    <script src="/static/newsfeed/vendor/jquery/jquery.min.js"></script>
+    <script src="/static/newsfeed/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="/static/newsfeed/assets/js/browser.min.js"></script>
+    <script src="/static/newsfeed/assets/js/breakpoints.min.js"></script>
+    <script src="/static/newsfeed/assets/js/transition.js"></script>
+    <script src="/static/newsfeed/assets/js/owl-carousel.js"></script>
+    <script src="/static/newsfeed/assets/js/custom.js"></script>
+    <script src="/static/newsfeed/assets/js/tabs.js"></script>
+
+</body>
+
+
+  </body>
+
+</html>

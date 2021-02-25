@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+
+    {% block site_title %}
+    <title>Mediation Tool (prototype)</title>
+    {% endblock site_title %}
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/newsfeed/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="/static/newsfeed/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="/static/newsfeed/assets/css/templatemo-style.css">
+    <link rel="stylesheet" href="/static/newsfeed/assets/css/owl.css">
+
+  </head>
+
+<body class="is-preload">
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+      <!-- Main -->
+        <div id="main">
+          <div class="inner">
+
+            {% block header_wrapper %}
+            <!-- Header -->
+            <header id="header">
+            {% block header_logo %}
+              <div class="logo">
+                <a href="index.html">Mediation tool</a>
+              </div>
+            {% endblock header_logo %}
+            </header>
+            {% endblock header_wrapper %}
+
+            <!-- Page Heading -->
+            <div class="page-heading">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-12">
+                    <h1>Opinion on settings: yours vs the others</h1>
+                    <p><strong>The table</strong> shown below is the combination of all possible settings. You can see whether
+                    you have give us a positive of negative feedback on each combination. Just below your opinion, there is the
+                    percentage of likes we have received in total.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+<section class="simple-post">
+<div class="container-fluid">
+{% if all_config %}
+<table style="width:100%">
+  <tr>
+    <th> </th>
+    <th width=20% >Algo A (cookies)</th>
+    <th width=20% >Algo B (account)</th>
+    <th width=20% >Algo C (location)</th>
+    <th width=20% >Algo D (sponsorised)</th>
+  </tr>
+  <tr>
+    <th>Your votes</th>
+    <th>{% for config in config_yes %}{% if config.isA%}
+        <img src="/static/newsfeed/assets/images/like_rz.png" style="width:50%">
+        {% endif %}{% endfor %}
+        {% for config in config_no %}{% if config.isA%}
+        <img src="/static/newsfeed/assets/images/dislike_rz.png" style="width:50%">
+        {% endif %}{% endfor %}</th>
+    <th>{% for config in config_yes %}{% if config.isB %}
+        <img src="/static/newsfeed/assets/images/like_rz.png" style="width:50%">
+        {% endif %}{% endfor %}
+        {% for config in config_no %}{% if config.isB %}
+        <img src="/static/newsfeed/assets/images/dislike_rz.png" style="width:50%">
+        {% endif %}{% endfor %}</th>
+    <th>{% for config in config_yes %}{% if config.isC %}
+        <img src="/static/newsfeed/assets/images/like_rz.png" style="width:50%">
+        {% endif %}{% endfor %}
+        {% for config in config_no %}{% if config.isC %}
+        <img src="/static/newsfeed/assets/images/dislike_rz.png" style="width:50%">
+        {% endif %}{% endfor %}</th>
+    <th>{% for config in config_yes %}{% if config.isD %}
+        <img src="/static/newsfeed/assets/images/like_rz.png" style="width:50%">
+        {% endif %}{% endfor %}
+        {% for config in config_no %}{% if config.isD %}
+        <img src="/static/newsfeed/assets/images/dislike_rz.png" style="width:50%">
+        {% endif %}{% endfor %}</th>
+  </tr>
+  <tr>
+    <th>How many agree with you?</th>
+    <th>{% for config in config_yes %}{% if config.isA%}
+        {{config.print_like_ratio}}
+        {% endif %}{% endfor %}
+        {% for config in config_no %}{% if config.isA%}
+        {{config.print_dislike_ratio}}
+        {% endif %}{% endfor %}</th>
+    <th>{% for config in config_yes %}{% if config.isB %}
+        {{config.print_like_ratio}}
+        {% endif %}{% endfor %}
+        {% for config in config_no %}{% if config.isB %}
+        {{config.print_dislike_ratio}}
+        {% endif %}{% endfor %}</th>
+    <th>{% for config in config_yes %}{% if config.isC %}
+        {{config.print_like_ratio}}
+        {% endif %}{% endfor %}
+        {% for config in config_no %}{% if config.isC %}
+        {{config.print_dislike_ratio}}
+        {% endif %}{% endfor %}</th>
+    <th>{% for config in config_yes %}{% if config.isD %}
+        {{config.print_like_ratio}}
+        {% endif %}{% endfor %}
+        {% for config in config_no %}{% if config.isD %}
+        {{config.print_dislike_ratio}}
+        {% endif %}{% endfor %}</th>
+  </tr>
+
+</table>
+    <br>
+{% else %}
+    <p>No info available.</p>
+{% endif %}
+</div>
+</section>
+<section class="simple-post">
+<div class="container-fluid">
+<h3>Give us some feedback</h3>
+<p>Do you feel influenced by other participants' answers?</p>
+<form method="post">
+{% csrf_token %}
+    <input type="radio" name="approve" id="id_yes" value="yes">
+    <label for="id_yes">Yes</label><br>
+    <input type="radio" name="approve" id="id_no" value="no">
+    <label for="id_no">No</label><br>
+    <label for="id_comment">Give us your reason:</label>
+    <input type="textarea" id="id_comment" name="comment">
+<br>
+<br>
+<button type="submit">Submit</button>
+</form>
+</div>
+</section>
+<section class="simple-post">
+<div class="container-fluid">
+<h3>Have you voted for all four algorithms?</h3>
+    <p>You can go to the finale mediation page.</p>
+    <br>
+
+    <div class="primary-button">
+        <a href="consensus.html">Go to mediation page</a>
+    </div>
+</div>
+</section>
+<section class="simple-post">
+<div class="container-fluid">
+<h3>What to do next?</h3>
+    <p>You can explore and vote for the other algorithms by changing the settings.</p>
+    <br>
+
+    <div class="primary-button">
+        <a href="settings.html">Back to settings page</a>
+    </div>
+<br>
+</div>
+</section>
+
+          </div>
+        </div>
+
+
+
+
+{% block left_sidebar %}
+      <!-- Sidebar -->
+        <div id="sidebar">
+
+          <div class="inner">
+
+            <!-- Search Box -->
+            <section id="search" class="alt">
+              <form method="get" action="#">
+                <input type="text" name="search" id="search" placeholder="Search..." />
+              </form>
+            </section>
+
+            <!-- Menu -->
+            <nav id="menu">
+              <ul>
+                <li><a href="result.html">Recommendation result</a></li>
+                <li><a href="settings.html">Change settings</a></li>
+                <li><a href="personal.html">Votes summary</a></li>
+                <li><a href="consensus.html">Mediation summary</a></a></li>
+                <li><a href="http://mediationtool.pythonanywhere.com/newsfeed/index.html">Exit</a></li>
+              </ul>
+            </nav>
+
+        {% block footer %}
+            <!-- Footer -->
+            <footer id="footer">
+              <p class="copyright">ReEnTrust 2020
+              <br>Contact: <a href = "mailto: blegaste@ed.ac.uk">blegaste@ed.ac.uk</a>
+              <br>Designed based on <a rel="nofollow" href="https://www.facebook.com/templatemo">Template Mo</a></p>
+            </footer>
+        {% endblock footer %}
+
+          </div>
+        </div>
+{% endblock left_sidebar %}
+
+    </div>
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+    <script src="/static/newsfeed/vendor/jquery/jquery.min.js"></script>
+    <script src="/static/newsfeed/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="/static/newsfeed/assets/js/browser.min.js"></script>
+    <script src="/static/newsfeed/assets/js/breakpoints.min.js"></script>
+    <script src="/static/newsfeed/assets/js/transition.js"></script>
+    <script src="/static/newsfeed/assets/js/owl-carousel.js"></script>
+    <script src="/static/newsfeed/assets/js/custom.js"></script>
+</body>
+
+
+  </body>
+
+</html>

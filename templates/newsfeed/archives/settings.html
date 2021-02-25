@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+
+    {% block site_title %}
+    <title>Mediation Tool (prototype)</title>
+    {% endblock site_title %}
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/newsfeed/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<!--
+Ramayana CSS Template
+https://templatemo.com/tm-529-ramayana
+-->
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="/static/newsfeed/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="/static/newsfeed/assets/css/templatemo-style.css">
+    <link rel="stylesheet" href="/static/newsfeed/assets/css/owl.css">
+    <link rel="stylesheet" href="/static/newsfeed/assets/css/tabs.css">
+    <link rel="stylesheet" href="/static/newsfeed/assets/css/accordion.css">
+
+  </head>
+
+<body class="is-preload">
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+      <!-- Main -->
+        <div id="main">
+          <div class="inner">
+
+            {% block header_wrapper %}
+            <!-- Header -->
+            <header id="header">
+            {% block header_logo %}
+              <div class="logo">
+                <a href="index.html">Mediation tool</a>
+              </div>
+            {% endblock header_logo %}
+            </header>
+            {% endblock header_wrapper %}
+
+            <!-- Page Heading -->
+            <div class="page-heading">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-12">
+                    <h1>Settings</h1>
+                    <p>On this page, each algorithm is explained, then you can chose settings and observe the impact on the results.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+ <!-- Tab links -->
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'algoA')" id="defaultOpen">Algorithm A</button>
+  <button class="tablinks" onclick="openCity(event, 'algoB')">Algorithm B</button>
+  <button class="tablinks" onclick="openCity(event, 'algoC')">Algorithm C</button>
+  <button class="tablinks" onclick="openCity(event, 'algoD')">Algorithm D</button>
+</div>
+
+<!-- Tab content -->
+<div id="algoA" class="tabcontent">
+    <br>
+  <h3>What does Algorithm A compute?</h3>
+  <p>This algorithm generates news content to Alex based on browsing history.
+     The algorithm uses the cookies accepted by Alex to detect Alex’s visited pages.</p>
+</div>
+
+<div id="algoB" class="tabcontent">
+    <br>
+  <h3>What does Algorithm B compute?</h3>
+  <p>This algorithm generates news content to Alex based on a similar user’s favourites.
+     The algorithm requires Alex to create an account and share personal information.</p>
+</div>
+
+<div id="algoC" class="tabcontent">
+    <br>
+  <h3>What does Algorithm C compute?</h3>
+  <p>This algorithm generates news content to Alex based on Alex’s current location.
+     The algorithm shows local news to all users without any personalisation (no cookies, no account).</p>
+</div>
+
+<div id="algoD" class="tabcontent">
+    <br>
+  <h3>What does Algorithm D compute?</h3>
+  <p>This algorithm shows sponsorised and popular news items to Alex (e.g . NHS official communication and Covid-19 news).
+     The algorithm overrides Alex’s cookies, personal information and location.
+     The news might not be adapted to Alex’s taste.</p>
+</div>
+
+
+<br>
+<br>
+<h1>Which settings do you want to try?</h1>
+<p>Please check options to know more about what these algorithms will show to Alex?</p>
+<!--
+    <form method="post">
+    {% csrf_token %}
+        <input type="checkbox" name="algoA" id="id_algoA">
+        <label for="id_algoA">I want to see what algorithm A suggests (cookies accepted)</label><br>
+        <input type="checkbox" name="algoB" id="id_algoB">
+        <label for="id_algoB">I want to see what algorithm B suggests (account created)</label><br>
+        <input type="checkbox" name="algoC" id="id_algoC">
+        <label for="id_algoC">I want to see what algorithm C suggests (location shared)</label><br>
+        <input type="checkbox" name="algoD" id="id_algoD">
+        <label for="id_algoD">I want to see what algorithm D suggests (non-personalised recommendation)</label><br>
+        <br>
+        <button type="submit" style="font-size: 100%;" >Update result</button>
+    </form>
+-->
+<form method="post">
+{% csrf_token %}
+    <input type="radio" name="algo" id="id_algoA" value="algoA">
+    <label for="id_algoA">I want to see what algorithm A suggests (cookies accepted)</label><br>
+    <input type="radio" name="algo" id="id_algoB" value="algoB">
+    <label for="id_algoB">I want to see what algorithm B suggests (account created)</label><br>
+    <input type="radio" name="algo" id="id_algoC" value="algoC">
+    <label for="id_algoC">I want to see what algorithm C suggests (location shared)</label><br>
+    <input type="radio" name="algo" id="id_algoD" value="algoD">
+    <label for="id_algoD">I want to see what algorithm D suggests (non-personalised recommendation)</label><br>
+<br>
+<button type="submit">Result</button>
+</form>
+
+
+          </div>
+        </div>
+
+      <!-- Sidebar -->
+        <div id="sidebar">
+
+          <div class="inner">
+
+            <!-- Search Box -->
+            <section id="search" class="alt">
+              <form method="get" action="#">
+                <input type="text" name="search" id="search" placeholder="Search..." />
+              </form>
+            </section>
+
+            <!-- Menu -->
+            <nav id="menu">
+              <ul>
+                <li><a href="result.html">Recommendation result</a></li>
+                <li><a href="settings.html">Change settings</a></li>
+                <li><a href="personal.html">Votes summary</a></li>
+                <li><a href="consensus.html">Mediation summary</a></a></li>
+                <li><a href="http://mediationtool.pythonanywhere.com/newsfeed/index.html">Exit</a></li>
+              </ul>
+            </nav>
+
+            <!-- Footer -->
+            <footer id="footer">
+              <p class="copyright">ReEnTrust 2020
+              <br>Contact: <a href = "mailto: blegaste@ed.ac.uk">blegaste@ed.ac.uk</a>
+              <br>Designed based on <a rel="nofollow" href="https://www.facebook.com/templatemo">Template Mo</a></p>
+            </footer>
+
+          </div>
+        </div>
+
+    </div>
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+    <script src="/static/newsfeed/vendor/jquery/jquery.min.js"></script>
+    <script src="/static/newsfeed/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="/static/newsfeed/assets/js/browser.min.js"></script>
+    <script src="/static/newsfeed/assets/js/breakpoints.min.js"></script>
+    <script src="/static/newsfeed/assets/js/transition.js"></script>
+    <script src="/static/newsfeed/assets/js/owl-carousel.js"></script>
+    <script src="/static/newsfeed/assets/js/custom.js"></script>
+    <script src="/static/newsfeed/assets/js/tabs.js"></script>
+
+</body>
+
+
+  </body>
+
+</html>

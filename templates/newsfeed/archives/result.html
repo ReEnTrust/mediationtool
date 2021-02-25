@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+
+
+    {% block site_title %}
+    <title>Mediation Tool (prototype)</title>
+    {% endblock site_title %}
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/newsfeed/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="/static/newsfeed/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="/static/newsfeed/assets/css/templatemo-style.css">
+    <link rel="stylesheet" href="/static/newsfeed/assets/css/owl.css">
+
+  </head>
+
+<body class="is-preload">
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+      <!-- Main -->
+        <div id="main">
+          <div class="inner">
+
+            {% block header_wrapper %}
+            <!-- Header -->
+            <header id="header">
+            {% block header_logo %}
+              <div class="logo">
+                <a href="index.html">Mediation tool</a>
+              </div>
+            {% endblock header_logo %}
+            </header>
+            {% endblock header_wrapper %}
+
+            <!-- Page Heading -->
+            <div class="page-heading">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-12">
+                    <h1>Personalised results</h1>
+                    <p><strong>The news displayed below</strong> could be suggested to Alex's profile when considering the following settings.
+                    <p>Below the result, you have the opportunity to give your opinion on the suggested news and add a comment to explain
+                    why you like or dislike what you see.</p>
+                    <p><strong>The settings are:</strong></p>
+                <ul>
+                {% if config_algoA %}
+                    <li>Algorithm A: content related to personal history (from accepted cookies)</li>
+                {% endif %}
+                {% if config_algoB %}
+                    <li>Algorithm B: content related to personal data (from created account)</li>
+                {% endif %}
+                {% if config_algoC %}
+                    <li>Algorithm C: content related to shared location</li>
+                {% endif %}
+                {% if config_algoD %}
+                    <li>Algorithm D: sponsorised and top like content</li>
+                {% endif %}
+              </ul>
+    <br>
+    <strong>What does it mean exactly?</strong><br>
+    {{ config_description }}
+</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+{% block content %}
+            <section class="simple-post">
+                <div class="container-fluid">
+
+{% if all_news %}
+    {% for news in all_news %}
+        <ul>
+        <div class="row">
+            <div class="col-lg-10">
+                <h2>{{ news.title }}</h2>
+                <p>{{ news.body }}</p>
+            </div>
+        </div>
+        <br>
+        </ul>
+    {% endfor %}
+    <br>
+{% else %}
+    <p>No news are available.</p>
+{% endif %}
+</div>
+</section>
+<section class="simple-post">
+<div class="container-fluid">
+<h1>Give us some feedback</h1>
+<p>What do you think about this recommendation, do you think it fits with Alex's profile?</p>
+<br>
+<form method="post">
+{% csrf_token %}
+    <input type="radio" name="approve" id="id_yes" value="yes">
+    <label for="id_yes">Yes</label><br>
+    <input type="radio" name="approve" id="id_no" value="no">
+    <label for="id_no">No</label><br>
+    <label for="id_comment">Give us your reason:</label>
+    <input type="textarea" id="id_comment" name="comment">
+<br>
+<br>
+<button type="submit">Submit</button>
+</form>
+</div>
+</section>
+
+<section class="simple-post">
+<div class="container-fluid">
+<h1>What to do next?</h1>
+    <p>You can explore the other algorithms by changing the settings.</p>
+    <br>
+
+    <div class="primary-button">
+        <a href="settings.html">Back to settings page</a>
+    </div>
+    <p>You can have a summary of the feedback you gave with a summary of your votes.</p>
+    <br>
+
+    <div class="primary-button">
+        <a href="personal.html">Go to votes page</a>
+    </div>
+
+</div>
+</section>
+
+
+{% endblock content %}
+
+
+          </div>
+        </div>
+
+
+
+
+
+{% block left_sidebar %}
+      <!-- Sidebar -->
+        <div id="sidebar">
+
+          <div class="inner">
+
+            <!-- Search Box -->
+            <section id="search" class="alt">
+              <form method="get" action="#">
+                <input type="text" name="search" id="search" placeholder="Search..." />
+              </form>
+            </section>
+
+            <!-- Menu -->
+            <nav id="menu">
+              <ul>
+                <li><a href="result.html">Recommendation result</a></li>
+                <li><a href="settings.html">Change settings</a></li>
+                <li><a href="personal.html">Votes summary</a></li>
+                <li><a href="consensus.html">Mediation summary</a></a></li>
+                <li><a href="http://mediationtool.pythonanywhere.com/newsfeed/index.html">Exit</a></li>
+              </ul>
+            </nav>
+
+        {% block footer %}
+            <!-- Footer -->
+            <footer id="footer">
+              <p class="copyright">ReEnTrust 2020
+              <br>Contact: <a href = "mailto: blegaste@ed.ac.uk">blegaste@ed.ac.uk</a>
+              <br>Designed based on <a rel="nofollow" href="https://www.facebook.com/templatemo">Template Mo</a></p>
+            </footer>
+        {% endblock footer %}
+
+          </div>
+        </div>
+{% endblock left_sidebar %}
+
+    </div>
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+    <script src="/static/newsfeed/vendor/jquery/jquery.min.js"></script>
+    <script src="/static/newsfeed/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="/static/newsfeed/assets/js/browser.min.js"></script>
+    <script src="/static/newsfeed/assets/js/breakpoints.min.js"></script>
+    <script src="/static/newsfeed/assets/js/transition.js"></script>
+    <script src="/static/newsfeed/assets/js/owl-carousel.js"></script>
+    <script src="/static/newsfeed/assets/js/custom.js"></script>
+</body>
+
+
+  </body>
+
+</html>

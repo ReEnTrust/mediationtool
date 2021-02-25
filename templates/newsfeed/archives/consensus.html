@@ -45,42 +45,49 @@
             {% endblock header_wrapper %}
 
             <!-- Page Heading -->
-            
-
-{% block content %}
-              
-            
-{% if all_config %}
-    {% for config in all_config %}
-
-                <ul>
-                {% if config.age %}
-                    <li>Age</li>
-                {% endif %}
-                {% if config.gender %}
-                    <li>Gender</li>
-                {% endif %}
-                {% if config.algoA %}
-                    <li>Algorithm A</li>
-                {% endif %}
-                {% if config.algoB %}
-                    <li>Algorithm B</li>
-                {% endif %}
-                {% if config.algoC %}
-                    <li>Algorithm C</li>
-                {% endif %}
-              </ul>
-        <ul>
-        <div class="row">
-            <div class="col-lg-10">
-                <h2>Approval ratio: {{ config.approved }}/{{ config.total_votes }}</h2>
-                <p>Unapproval ratio:{{ config.unapproved }}/{{ config.total_votes }}</p>
+            <div class="page-heading">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-12">
+                    <h1>General consensus</h1>
+                    <p>This page shows you the <strong>like ratios</strong> for every possible settings.
+                    This is based on all the votes we collected on this mediation tool platform.</p>
+                  </div>
+                </div>
+              </div>
             </div>
-        </div>
-        </ul>
+
+<br>
 
 
-    {% endfor %}
+
+{% if all_config %}
+<table style="width:100%">
+  <tr>
+    <th> </th>
+    <th>Age</th>
+    <th>Gender</th>
+    <th>Age & Gender</th>
+  </tr>
+  <tr>
+    <th>Algo A</th>
+    <th>{% for config in all_config %}{% if config.age and not config.gender and config.algoA %}{{ config.print_like_ratio }}{% endif %}{% endfor %}</th>
+    <th>{% for config in all_config %}{% if not config.age and config.gender and config.algoA %}{{ config.print_like_ratio }}{% endif %}{% endfor %}</th>
+    <th>{% for config in all_config %}{% if config.age and config.gender and config.algoA %}{{ config.print_like_ratio }}{% endif %}{% endfor %}</th>
+  </tr>
+  <tr>
+    <th>Algo B</th>
+    <th>{% for config in all_config %}{% if config.age and not config.gender and config.algoB %}{{ config.print_like_ratio }}{% endif %}{% endfor %}</th>
+    <th>{% for config in all_config %}{% if not config.age and config.gender and config.algoB %}{{ config.print_like_ratio }}{% endif %}{% endfor %}</th>
+    <th>{% for config in all_config %}{% if config.age and config.gender and config.algoB %}{{ config.print_like_ratio }}{% endif %}{% endfor %}</th>
+  </tr>
+  <tr>
+    <th>Algo C</th>
+    <th>{% for config in all_config %}{% if config.age and not config.gender and config.algoC %}{{ config.print_like_ratio }}{% endif %}{% endfor %}</th>
+    <th>{% for config in all_config %}{% if not config.age and config.gender and config.algoC %}{{ config.print_like_ratio }}{% endif %}{% endfor %}</th>
+    <th>{% for config in all_config %}{% if config.age and config.gender and config.algoC %}{{ config.print_like_ratio }}{% endif %}{% endfor %}</th>
+  </tr>
+</table>
     <br>
 {% else %}
     <p>No info available.</p>
@@ -88,12 +95,13 @@
 
 
 
-{% endblock content %}
+
+
 
 
           </div>
         </div>
-    
+
 
 
 
@@ -110,16 +118,15 @@
                 <input type="text" name="search" id="search" placeholder="Search..." />
               </form>
             </section>
-              
+
             <!-- Menu -->
             <nav id="menu">
               <ul>
-                <li><a href="index.html">Homepage</a></li>
-                <li><a href="result.html">Result</a></li>
-                <li><a href="privacy.html">Privacy</a></li>
-                <li><a href="transparency.html">Transparency</a></li>
-                <li><a href="personal.html">Personal view</a></li>
-                <li><a href="consensus.html">Consensus</a></li>
+                <li><a href="result.html">Recommendation result</a></li>
+                <li><a href="settings.html">Change settings</a></li>
+                <li><a href="personal.html">Votes summary</a></li>
+                <li><a href="consensus.html">Mediation summary</a></a></li>
+                <li><a href="http://mediationtool.pythonanywhere.com/newsfeed/index.html">Exit</a></li>
               </ul>
             </nav>
 
@@ -127,6 +134,7 @@
             <!-- Footer -->
             <footer id="footer">
               <p class="copyright">ReEnTrust 2020
+              <br>Contact: <a href = "mailto: blegaste@ed.ac.uk">blegaste@ed.ac.uk</a>
               <br>Designed based on <a rel="nofollow" href="https://www.facebook.com/templatemo">Template Mo</a></p>
             </footer>
         {% endblock footer %}

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+
+    {% block site_title %}
+    <title>Mediation Tool (prototype)</title>
+    {% endblock site_title %}
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/newsfeed/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<!--
+Ramayana CSS Template
+https://templatemo.com/tm-529-ramayana
+-->
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="/static/newsfeed/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="/static/newsfeed/assets/css/templatemo-style.css">
+    <link rel="stylesheet" href="/static/newsfeed/assets/css/owl.css">
+    <link rel="stylesheet" href="/static/newsfeed/assets/css/tabs.css">
+    <link rel="stylesheet" href="/static/newsfeed/assets/css/accordion.css">
+
+  </head>
+
+<body class="is-preload">
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+      <!-- Main -->
+        <div id="main">
+          <div class="inner">
+
+            {% block header_wrapper %}
+            <!-- Header -->
+            <header id="header">
+            {% block header_logo %}
+              <div class="logo">
+                <a href="">Mediation tool</a>
+              </div>
+            {% endblock header_logo %}
+            </header>
+            {% endblock header_wrapper %}
+
+            <!-- Page Heading -->
+            <div class="page-heading">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-12">
+                    <h1>Make your own analysis of the algorithm</h1>
+                    <p> We present a hypothetical person browsing a newsfeed platform.</p>
+                    <p> We’ll call the person Alex. Alex is 27 years old Web developer and designer, residing at Oxford, United Kingdom. </p>
+                    <p>During the last few days, Alex has spent time reading news about International Politics.
+                    However, Alex usually likes and shares IT and Science related news on the platform.</p>
+                    <p> Alex shares similar demographic information with another user Eli who usually likes and shares news about Entertainement and Arts.</p>
+                    <p>A newsfeed platform aims to show their users the content that would fit the most with what they like and expect.</p>
+                    <p>To recommend news items to Alex, the platform combines information it has collected about them. The algorithm is a
+                    mix of the four features that are explained just below.</p>
+                    <h4>The purpose of this page is to show you how each feature influences the news recommended to Alex and gives you the opportunity
+                    to give us your opinion on whether they are relevant.</h4>
+                    <p>Please read through each algorithm explanation and evaluate the suggested news items by giving your feedback at the bottom of the page.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+<br>
+
+ <!-- Tab links -->
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'algoA')" id="defaultOpen">Algo A: cookies</button>
+  <button class="tablinks" onclick="openCity(event, 'algoB')">Algo B: account</button>
+  <button class="tablinks" onclick="openCity(event, 'algoC')">Algo C: location</button>
+  <button class="tablinks" onclick="openCity(event, 'algoD')">Algo D: featured</button>
+</div>
+
+<!-- Tab content -->
+<div id="algoA" class="tabcontent">
+    <br>
+  <h3>What does Algorithm A compute?</h3>
+  <p>This algorithm generates news content to Alex based on browsing history.
+     The algorithm uses the cookies accepted by Alex to detect Alex’s visited pages.</p>
+
+<section class="simple-post">
+<div class="container-fluid">
+
+{% if all_newsA %}
+    {% for news in all_newsA %}
+        <ul>
+        <div class="row">
+            <div class="col-lg-10">
+                <h2>{{ news.title }}</h2>
+                <p>{{ news.body }}</p>
+            </div>
+        </div>
+        <br>
+        </ul>
+    {% endfor %}
+    <br>
+{% else %}
+    <p>No news are available.</p>
+{% endif %}
+</div>
+</section>
+<section class="simple-post">
+<div class="container-fluid">
+<h1>Give us some feedback</h1>
+<p>What do you think about this recommendation, do you think it fits with Alex's profile?</p>
+<br>
+<form method="post">
+{% csrf_token %}
+    <input type="radio" name="approveA" id="id_yesA" value="yes">
+    <label for="id_yesA">Yes</label><br>
+    <input type="radio" name="approveA" id="id_noA" value="no">
+    <label for="id_noA">No</label><br>
+    <label for="id_comment">Give us your reason:</label>
+    <input type="textarea" id="id_comment" name="comment">
+<br>
+<br>
+<button type="submit">Submit</button>
+</form>
+</div>
+</section>
+</div>
+
+<div id="algoB" class="tabcontent">
+    <br>
+  <h3>What does Algorithm B compute?</h3>
+  <p>This algorithm generates news content to Alex based on a similar user’s favourites.
+     The algorithm requires Alex to create an account and share personal information.</p>
+
+<section class="simple-post">
+<div class="container-fluid">
+
+{% if all_newsB %}
+    {% for news in all_newsB %}
+        <ul>
+        <div class="row">
+            <div class="col-lg-10">
+                <h2>{{ news.title }}</h2>
+                <p>{{ news.body }}</p>
+            </div>
+        </div>
+        <br>
+        </ul>
+    {% endfor %}
+    <br>
+{% else %}
+    <p>No news are available.</p>
+{% endif %}
+</div>
+</section>
+<section class="simple-post">
+<div class="container-fluid">
+<h1>Give us some feedback</h1>
+<p>What do you think about this recommendation, do you think it fits with Alex's profile?</p>
+<br>
+<form method="post">
+{% csrf_token %}
+    <input type="radio" name="approveB" id="id_yesB" value="yes">
+    <label for="id_yesB">Yes</label><br>
+    <input type="radio" name="approveB" id="id_noB" value="no">
+    <label for="id_noB">No</label><br>
+    <label for="id_comment">Give us your reason:</label>
+    <input type="textarea" id="id_comment" name="comment">
+<br>
+<br>
+<button type="submit">Submit</button>
+</form>
+</div>
+</section>
+</div>
+
+<div id="algoC" class="tabcontent">
+    <br>
+  <h3>What does Algorithm C compute?</h3>
+  <p>This algorithm generates news content to Alex based on Alex’s current location.
+     The algorithm shows local news to all users without any personalisation (no cookies, no account).</p>
+
+
+<section class="simple-post">
+<div class="container-fluid">
+
+{% if all_newsC %}
+    {% for news in all_newsC %}
+        <ul>
+        <div class="row">
+            <div class="col-lg-10">
+                <h2>{{ news.title }}</h2>
+                <p>{{ news.body }}</p>
+            </div>
+        </div>
+        <br>
+        </ul>
+    {% endfor %}
+    <br>
+{% else %}
+    <p>No news are available.</p>
+{% endif %}
+</div>
+</section>
+<section class="simple-post">
+<div class="container-fluid">
+<h1>Give us some feedback</h1>
+<p>What do you think about this recommendation, do you think it fits with Alex's profile?</p>
+<br>
+<form method="post">
+{% csrf_token %}
+    <input type="radio" name="approveC" id="id_yesC" value="yes">
+    <label for="id_yesC">Yes</label><br>
+    <input type="radio" name="approveC" id="id_noC" value="no">
+    <label for="id_noC">No</label><br>
+    <label for="id_comment">Give us your reason:</label>
+    <input type="textarea" id="id_comment" name="comment">
+<br>
+<br>
+<button type="submit">Submit</button>
+</form>
+</div>
+</section>
+</div>
+
+<div id="algoD" class="tabcontent">
+    <br>
+  <h3>What does Algorithm D compute?</h3>
+  <p>This algorithm shows sponsored and trending news items to Alex (e.g . NHS official communication and Covid-19 news).
+     The algorithm overrides Alex’s cookies, personal information and location.
+     The news might not be adapted to Alex’s taste.</p>
+
+<section class="simple-post">
+<div class="container-fluid">
+
+{% if all_newsD %}
+    {% for news in all_newsD %}
+        <ul>
+        <div class="row">
+            <div class="col-lg-10">
+                <h2>{{ news.title }}</h2>
+                <p>{{ news.body }}</p>
+            </div>
+        </div>
+        <br>
+        </ul>
+    {% endfor %}
+    <br>
+{% else %}
+    <p>No news are available.</p>
+{% endif %}
+</div>
+</section>
+<section class="simple-post">
+<div class="container-fluid">
+<h1>Give us some feedback</h1>
+<p>What do you think about this recommendation, do you think it fits with Alex's profile?</p>
+<br>
+<form method="post">
+{% csrf_token %}
+    <input type="radio" name="approveD" id="id_yesD" value="yes">
+    <label for="id_yesD">Yes</label><br>
+    <input type="radio" name="approveD" id="id_noD" value="no">
+    <label for="id_noD">No</label><br>
+    <label for="id_comment">Give us your reason:</label>
+    <input type="textarea" id="id_comment" name="comment">
+<br>
+<br>
+<button type="submit">Submit</button>
+</form>
+</div>
+</section>
+</div>
+
+
+
+<section class="simple-post">
+<div class="container-fluid">
+<h3>What to do next?</h3>
+    <p>You can go to the <b>votes summary</b> page to see what you have voted compared to other participants opinions.</p>
+    <br>
+
+    <div class="primary-button">
+        <a href="votes.html">Go to Votes</a>
+    </div>
+<br>
+</div>
+</section>
+
+
+
+          </div>
+        </div>
+
+      <!-- Sidebar -->
+        <div id="sidebar">
+
+          <div class="inner">
+
+            <!-- Search Box -->
+            <section id="search" class="alt">
+              <form method="get" action="#">
+                <input type="text" name="search" id="search" placeholder="Search..." />
+              </form>
+            </section>
+
+            <!-- Menu -->
+            <nav id="menu">
+              <ul>
+                <li><a href="analyse.html">Personal Analysis</a></li>
+                <li><a href="votes.html">Votes Summary</a></li>
+                <li><a href="mediation.html">Mediation Process</a></a></li>
+                <li><a href="http://mediationtool.pythonanywhere.com/newsfeed/index.html">Exit</a></li>
+              </ul>
+            </nav>
+
+            <!-- Footer -->
+            <footer id="footer">
+              <p class="copyright">ReEnTrust 2020
+              <br>Contact: <a href = "mailto: blegaste@ed.ac.uk">blegaste@ed.ac.uk</a>
+              <br>Designed based on <a rel="nofollow" href="https://www.facebook.com/templatemo">Template Mo</a></p>
+            </footer>
+
+          </div>
+        </div>
+
+    </div>
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+    <script src="/static/newsfeed/vendor/jquery/jquery.min.js"></script>
+    <script src="/static/newsfeed/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="/static/newsfeed/assets/js/browser.min.js"></script>
+    <script src="/static/newsfeed/assets/js/breakpoints.min.js"></script>
+    <script src="/static/newsfeed/assets/js/transition.js"></script>
+    <script src="/static/newsfeed/assets/js/owl-carousel.js"></script>
+    <script src="/static/newsfeed/assets/js/custom.js"></script>
+    <script src="/static/newsfeed/assets/js/tabs.js"></script>
+
+</body>
+
+
+  </body>
+
+</html>

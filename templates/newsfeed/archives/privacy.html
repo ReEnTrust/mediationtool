@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+
+    {% block site_title %}
+    <title>Mediation Tool (prototype)</title>
+    {% endblock site_title %}
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/newsfeed/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<!--
+Ramayana CSS Template
+https://templatemo.com/tm-529-ramayana
+-->
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="/static/newsfeed/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="/static/newsfeed/assets/css/templatemo-style.css">
+    <link rel="stylesheet" href="/static/newsfeed/assets/css/owl.css">
+
+  </head>
+
+<body class="is-preload">
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+      <!-- Main -->
+        <div id="main">
+          <div class="inner">
+
+            {% block header_wrapper %}
+            <!-- Header -->
+            <header id="header">
+            {% block header_logo %}
+              <div class="logo">
+                <a href="index.html">Mediation tool</a>
+              </div>
+            {% endblock header_logo %}
+            </header>
+            {% endblock header_wrapper %}
+
+            <!-- Page Heading -->
+            <div class="page-heading">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-12">
+                    <h1>Privacy Settings</h1>
+                    <p>On this page, you can choose whether our fictional user's age and gender should be taken into account when
+                    suggesting news to them. By clicking on the Result button, you will be shown the result of news
+                    recommendation according to the chosen settings.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+<br>
+<br>
+<!--
+<div class="container emp-profile">
+            <form method="post">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-img">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="profile-head">
+                                    <h5>
+                                        Jenny Ghelani
+                                    </h5>
+                                    <h6>
+                                        Web Developer and Designer
+                                    </h6>
+                                    <h7>
+                                        <strong>27</strong> years old
+                                    </h7>
+                                    <p class="proile-rating">FROM : <span>Oxford</span></p>
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-work">
+                            <br>
+                            <p>HOBBIES</p>
+                            <a href="">Sport</a><br/>
+                            <a href="">IT</a><br/>
+                            <a href="">Travel</a><br/>
+                            <a href="">Modern art</a><br/>
+                            <a href=""></a><br/>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="tab-content profile-tab" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                        <div class="row">
+                                            <strong>History</strong>
+
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Most liked content</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>Travel stories</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Novelty interest ratio</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>8/10</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Subscription date</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>6 months ago</p>
+                                            </div>
+                                        </div>
+                            </div>
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Most liked content</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>Travel stories</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Novelty interest ratio</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>8/10</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Subscription date</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>6 months ago</p>
+                                            </div>
+                                        </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+<br>
+-->
+
+<form method="post">
+{% csrf_token %}
+How do you think the recommendation should be personalised?
+    <input type="radio" name="privacy" id="id_age" value="age">
+    <label for="id_age">Alex should provide age only</label><br>
+    <input type="radio" name="privacy" id="id_gender" value="gender">
+    <label for="id_gender">Alex should provide gender only</label><br>
+    <input type="radio" name="privacy" id="id_age_gender" value="age_gender">
+    <label for="id_age_gender">Alex should provide both age and gender</label><br>
+    <input type="radio" name="privacy" id="id_none" value="none">
+    <label for="id_none">Alex should not share any personal information</label><br>
+<br>
+<button type="submit">Result</button>
+</form>
+
+            <!-- Tables
+            <section class="buttons">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="section-heading">
+                      <h2>Buttons</h2>
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="filled-rectangle-button">
+                          <a href="#">Filled Button 1</a>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="border-rectangle-button">
+                          <a href="#">Border Button 2</a>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="filled-radius-button">
+                          <a href="#">Filled Button 3</a>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="border-radius-button">
+                          <a href="#">Border Button 4</a>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="filled-rounded-button">
+                          <a href="#">Filled Button 5</a>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="border-rounded-button">
+                          <a href="#">Border Button 6</a>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="filled-icon-button">
+                          <a href="#"><i class="fa fa-check"></i>Filled Button 7</a>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="border-icon-button">
+                          <a href="#"><i class="fa fa-check"></i>Border Button 8</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="filled-rectangle-button">
+                          <a href="#">Filled Button 9</a>
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="border-rectangle-button">
+                          <a href="#">Border Button 10</a>
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="filled-rounded-button">
+                          <a href="#">Filled Button 11</a>
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="border-rounded-button">
+                          <a href="#">Border Button 12</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+-->
+
+          </div>
+        </div>
+
+      <!-- Sidebar -->
+        <div id="sidebar">
+
+          <div class="inner">
+
+            <!-- Search Box -->
+            <section id="search" class="alt">
+              <form method="get" action="#">
+                <input type="text" name="search" id="search" placeholder="Search..." />
+              </form>
+            </section>
+
+            <!-- Menu -->
+            <nav id="menu">
+              <ul>
+                <li><a href="http://mediationtool.pythonanywhere.com/newsfeed/index.html">Homepage</a></li>
+                <li><a href="result.html">Recommendation result</a></li>
+                <li><a href="privacy.html">Privacy settings</a></li>
+                <li><a href="transparency.html">Algorithm selection</a></li>
+                <li><a href="personal.html">Personal view</a></li>
+                <li><a href="consensus.html">Community view</a></li>
+              </ul>
+            </nav>
+
+            <!-- Footer -->
+            <footer id="footer">
+              <p class="copyright">ReEnTrust 2020
+              <br>Contact: <a href = "mailto: blegaste@ed.ac.uk">blegaste@ed.ac.uk</a>
+              <br>Designed based on <a rel="nofollow" href="https://www.facebook.com/templatemo">Template Mo</a></p>
+            </footer>
+
+          </div>
+        </div>
+
+    </div>
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+    <script src="/static/newsfeed/vendor/jquery/jquery.min.js"></script>
+    <script src="/static/newsfeed/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="/static/newsfeed/assets/js/browser.min.js"></script>
+    <script src="/static/newsfeed/assets/js/breakpoints.min.js"></script>
+    <script src="/static/newsfeed/assets/js/transition.js"></script>
+    <script src="/static/newsfeed/assets/js/owl-carousel.js"></script>
+    <script src="/static/newsfeed/assets/js/custom.js"></script>
+</body>
+
+
+  </body>
+
+</html>

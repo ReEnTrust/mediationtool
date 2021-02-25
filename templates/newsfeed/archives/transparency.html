@@ -16,6 +16,10 @@
     <!-- Bootstrap core CSS -->
     <link href="/static/newsfeed/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+<!--
+Ramayana CSS Template
+https://templatemo.com/tm-529-ramayana
+-->
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="/static/newsfeed/assets/css/fontawesome.css">
@@ -49,101 +53,62 @@
               <div class="container-fluid">
                 <div class="row">
                   <div class="col-md-12">
-                    <h1>Approved and unapproved configuration</h1>
-                    <p><strong>The configurations</strong> shown below are the ones you have approved and then the ones you have disapproved.</p>
+                    <h1>Transparency settings</h1>
+                    <p>When news are suggested to users, <strong>depending on the algorithm</strong> result might differ.</p>
+                    <p>This page gives you a description of each possible algorithm. Then you can chose among them and observe
+                    how it impacts the result.</p>
                   </div>
                 </div>
               </div>
-            </div> 
+            </div>
 
 {% block content %}
-              
-            
-Approved:
-{% if config_yes %}
-    {% for config in config_yes %}
+              <section class="simple-post">
+              <div class="container-fluid">
 
-                <ul>
-                {% if config.age %}
-                    <li>Age</li>
-                {% endif %}
-                {% if config.gender %}
-                    <li>Gender</li>
-                {% endif %}
-                {% if config.algoA %}
-                    <li>Algorithm A</li>
-                {% endif %}
-                {% if config.algoB %}
-                    <li>Algorithm B</li>
-                {% endif %}
-                {% if config.algoC %}
-                    <li>Algorithm C</li>
-                {% endif %}
-              </ul>
-        <ul>
-        <div class="row">
-            <div class="col-lg-10">
-                <h2>Approval ratio: {{ config.approved }}/{{ config.total_votes }}</h2>
-                <p>Unapproval ratio:{{ config.unapproved }}/{{ config.total_votes }}</p>
-            </div>
-        </div>
-        </ul>
+               <div class="row">
+                  <div class="col-lg-4">
+						<h2>Algorithm A</h2>
+                      <p>This option makes the results only rely on similar users' favorite.</p>
+                      <br>
+                  </div>
+                  <div class="col-lg-4">
+						<h2>Algorithm B</h2>
+                      <p>This option makes the results only rely on user's like history.</p>
+                      <br>
+                  </div>
+                  <div class="col-lg-4">
+						<h2>Algorithm C</h2>
+                      <p>This option mixes algorithm A and B: it suggests results that fit with user's like history as well as similar users' favorite.</p>
+                  </div>
+                </div>
+
+              </div>
+              <br>
 
 
-    {% endfor %}
-    <br>
-{% else %}
-    <p>No info available.</p>
-{% endif %}
 
-Unapproved:
-{% if config_no %}
-    {% for config in config_no %}
-
-                <ul>
-                {% if config.age %}
-                    <li>Age</li>
-                {% endif %}
-                {% if config.gender %}
-                    <li>Gender</li>
-                {% endif %}
-                {% if config.algoA %}
-                    <li>Algorithm A</li>
-                {% endif %}
-                {% if config.algoB %}
-                    <li>Algorithm B</li>
-                {% endif %}
-                {% if config.algoC %}
-                    <li>Algorithm C</li>
-                {% endif %}
-              </ul>
-        <ul>
-        <div class="row">
-            <div class="col-lg-10">
-                <h2>Approval ratio: {{ config.approved }}/{{ config.total_votes }}</h2>
-                <p>Unapproval ratio:{{ config.unapproved }}/{{ config.total_votes }}</p>
-            </div>
-        </div>
-        </ul>
+<form method="post">
+{% csrf_token %}
+    <input type="radio" name="algo" id="id_algoA" value="algoA">
+    <label for="id_algoA">I want to see what algorithm A suggests</label><br>
+    <input type="radio" name="algo" id="id_algoB" value="algoB">
+    <label for="id_algoB">I want to see what algorithm B suggests</label><br>
+    <input type="radio" name="algo" id="id_algoC" value="algoC">
+    <label for="id_algoC">I want to see what algorithm C suggests</label><br>
+<br>
+<button type="submit">Result</button>
+</form>
 
 
-    {% endfor %}
-    <br>
-{% else %}
-    <p>No info available.</p>
-{% endif %}
 
 
-{% endblock content %}
 
+              </section>
           </div>
         </div>
-    
+{% endblock content %}
 
-
-
-
-{% block left_sidebar %}
       <!-- Sidebar -->
         <div id="sidebar">
 
@@ -155,30 +120,28 @@ Unapproved:
                 <input type="text" name="search" id="search" placeholder="Search..." />
               </form>
             </section>
-              
+
             <!-- Menu -->
             <nav id="menu">
               <ul>
-                <li><a href="index.html">Homepage</a></li>
-                <li><a href="result.html">Result</a></li>
-                <li><a href="privacy.html">Privacy</a></li>
-                <li><a href="transparency.html">Transparency</a></li>
+                <li><a href="http://mediationtool.pythonanywhere.com/newsfeed/index.html">Homepage</a></li>
+                <li><a href="result.html">Recommendation result</a></li>
+                <li><a href="privacy.html">Privacy settings</a></li>
+                <li><a href="transparency.html">Algorithm selection</a></li>
                 <li><a href="personal.html">Personal view</a></li>
-                <li><a href="consensus.html">Consensus</a></li>
+                <li><a href="consensus.html">Community view</a></li>
               </ul>
             </nav>
 
-        {% block footer %}
             <!-- Footer -->
             <footer id="footer">
               <p class="copyright">ReEnTrust 2020
+              <br>Contact: <a href = "mailto: blegaste@ed.ac.uk">blegaste@ed.ac.uk</a>
               <br>Designed based on <a rel="nofollow" href="https://www.facebook.com/templatemo">Template Mo</a></p>
             </footer>
-        {% endblock footer %}
 
           </div>
         </div>
-{% endblock left_sidebar %}
 
     </div>
 
