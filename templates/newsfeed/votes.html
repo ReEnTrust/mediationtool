@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="/static/newsfeed/assets/css/fontawesome.css">
     <link rel="stylesheet" href="/static/newsfeed/assets/css/templatemo-style.css">
     <link rel="stylesheet" href="/static/newsfeed/assets/css/owl.css">
+    <link rel="stylesheet" href="/static/newsfeed/assets/css/simpleslider.css">
+
 
   </head>
 
@@ -49,10 +51,13 @@
               <div class="container-fluid">
                 <div class="row">
                   <div class="col-md-12">
-                    <h1>Opinion on settings: yours vs the others</h1>
-                    <p><strong>The table</strong> shown below is the combination of all possible settings. You can see whether
-                    you have give us a positive of negative feedback on each combination. Just below your opinion, there is the
-                    percentage of likes we have received in total.</p>
+                    <h3>Summary of Votes: Yours vs Others</h3>
+                    <br>
+                    <p><font face="Arial" size="4px"><strong>The table</strong> below shows the summary of your like and dislike votes. Just below your votes is the
+                    aggregated percentage of the votes from other participants on your likes and dislikes votes.</font></p>
+                    <p><font face="Arial" size="4px" color="#474BB7"><b>Task 3:  Task 3: Now you can take a look at how your votes on the algorithm features
+                    compare with the votes from other participants.
+                    After completing the survey, click "Go to Mediation" to submit your answers and proceed to the next activity.</b></font></p>
                   </div>
                 </div>
               </div>
@@ -63,10 +68,10 @@
 <table style="width:100%">
   <tr>
     <th> </th>
-    <th width=20% >Algo A (cookies)</th>
-    <th width=20% >Algo B (account)</th>
-    <th width=20% >Algo C (location)</th>
-    <th width=20% >Algo D (sponsorised)</th>
+    <th width=20% >Cookies</th>
+    <th width=20% >Profile</th>
+    <th width=20% >Location</th>
+    <th width=20% >Sponsors</th>
   </tr>
   <tr>
     <th>Your votes</th>
@@ -96,7 +101,7 @@
         {% endif %}{% endfor %}</th>
   </tr>
   <tr>
-    <th>How many agree with you?</th>
+    <th>Percentage of votes that agree with you?</th>
     <th>{% for config in config_yes %}{% if config.isA%}
         {{config.print_like_ratio}}
         {% endif %}{% endfor %}
@@ -125,30 +130,174 @@
 
 </table>
     <br>
-</div>
-</section>
-<section class="simple-post">
-<div class="container-fluid">
-<h3>Give us some feedback</h3>
-<p>Do you want to change your votes after seeing other participants' answers?</p>
-<form method="post">
-{% csrf_token %}
-    <input type="radio" name="approve" id="id_yes" value="yes">
-    <label for="id_yes">Yes</label><br>
-    <input type="radio" name="approve" id="id_no" value="no">
-    <label for="id_no">No</label><br>
-    <label for="id_comment">Give us your reason:</label>
-    <input type="textarea" id="id_comment" name="comment">
+
+<br><br><hr><br>
+
+
+        <form method="post">
+            {% csrf_token %}
+            <h4>1) Please indicate how much you agree or disagree with the following statements.</h4>
+            <br>
+        <p2>a) Seeing this table makes me question my vote on results using browsing history</p2><br>
+            <br>
+             <div class="range">
+              <input type="range" name="algoAchange" id="id_algoAchange" step = "1" min="0" max="5" value="3" class="slider">
+              <div class="sliderticks">
+                <p>Don't know</p>
+                <p>Strongly disagree</p>
+                <p>Disagree</p>
+                <p>No preference</p>
+                <p>Agree</p>
+                <p>Strongly Agree</p>
+              </div>
+              <br><br>
+            <br>
+            <hr>
+
+            <p2>b) Seeing this table makes me question my vote on results using demographic information</p2><br>
+            <br>
+            <div class="range">
+              <input type="range" name="algoBchange" id="id_algoBchange" step = "1" min="0" max="5" value="3" class="slider">
+              <div class="sliderticks">
+                <p>Don't know</p>
+                <p>Strongly disagree</p>
+                <p>Disagree</p>
+                <p>No preference</p>
+                <p>Agree</p>
+                <p>Strongly Agree</p>
+              </div>
+              <br><br>
+            <br>
+            <hr>
+
+            <p2>c) Seeing this table makes me question my vote on results using location</p2><br>
+            <br>
+             <div class="range">
+              <input type="range" name="algoCchange" id="id_algoCchange" step = "1" min="0" max="5" value="3" class="slider">
+              <div class="sliderticks">
+                <p>Don't know</p>
+                <p>Strongly disagree</p>
+                <p>Disagree</p>
+                <p>No preference</p>
+                <p>Agree</p>
+                <p>Strongly Agree</p>
+              </div>
+              <br><br>
+            <br>
+            <hr>
+
+
+<!--
+            <input type="checkbox" name="algoDchange" id="id_algoDchange">
+            <label for="id_algoDchange">Seeing this table makes me question my vote on feature D</label><br>
+-->
+            <p2>d) Seeing this table makes me question my vote on results using sponsored content</p2><br>
+            <br>
+            <div class="range">
+              <input type="range" name="algoDchange" id="id_algoDchange" step = "1" min="0" max="5" value="3" class="slider">
+              <div class="sliderticks">
+                <p>Don't know</p>
+                <p>Strongly disagree</p>
+                <p>Disagree</p>
+                <p>No preference</p>
+                <p>Agree</p>
+                <p>Strongly Agree</p>
+              </div>
+              <br><br>
+            <br>
+            <hr>
+
+<!--
+            <br><br>
+
+            <h4>2) Are you concerned about a particular feature?</h4>
+            <br>
+
+            <input type="checkbox" name="algoAconcern" id="id_algoAconcern">
+            <label for="id_algoAconcern">I am concern about cookies</label><br>
+            <input type="checkbox" name="algoBconcern" id="id_algoBconcern">
+            <label for="id_algoBconcern">I am concern about giving my demographic information</label><br>
+            <input type="checkbox" name="algoCconcern" id="id_algoCconcern">
+            <label for="id_algoCconcern">I am concern about sharing my location</label><br>
+            <input type="checkbox" name="algoDconcern" id="id_algoDconcern">
+            <label for="id_algoDconcern">I am concern about seeing sponsored content</label><br>
+
+
+        <p2>a) I mind the newsfeed to use my browsing history</p2>
 <br>
+            <br>
+            <div class="range">
+              <input type="range" name="algoAconcern" id="id_algoAconcern" step = "1" min="0" max="5" value="3" class="slider">
+              <div class="sliderticks">
+                <p>Don't know</p>
+                <p>Strongly disagree</p>
+                <p>Disagree</p>
+                <p>No preference</p>
+                <p>Agree</p>
+                <p>Strongly Agree</p>
+              </div>
+            <br><br><hr>
+            <br>
+
+        <p2>b) I mind the newsfeed to use my demographic information</p2>
 <br>
-<button type="submit">Submit</button>
-</form>
-</div>
+            <br>
+            <div class="range">
+              <input type="range" name="algoBconcern" id="id_algoBconcern" step = "1" min="0" max="5" value="3" class="slider">
+              <div class="sliderticks">
+                <p>Don't know</p>
+                <p>Strongly disagree</p>
+                <p>Disagree</p>
+                <p>No preference</p>
+                <p>Agree</p>
+                <p>Strongly Agree</p>
+              </div>
+            <br><br><hr>
+            <br>
+
+
+            <p2>c) I mind the newsfeed to use my location</p2>
+<br>
+            <br>
+            <div class="range">
+              <input type="range" name="algoCconcern" id="id_algoCconcern" step = "1" min="0" max="5" value="3" class="slider">
+              <div class="sliderticks">
+                <p>Don't know</p>
+                <p>Strongly disagree</p>
+                <p>Disagree</p>
+                <p>No preference</p>
+                <p>Agree</p>
+                <p>Strongly Agree</p>
+              </div>
+            <br><br><hr>
+            <br>
+
+            <p2>d) I mind the newsfeed to use sponsors</p2>
+<br>
+            <br>
+            <div class="range">
+              <input type="range" name="algoDconcern" id="id_algoDconcern" step = "1" min="0" max="5" value="3" class="slider">
+              <div class="sliderticks">
+                <p>Don't know</p>
+                <p>Strongly disagree</p>
+                <p>Disagree</p>
+                <p>No preference</p>
+                <p>Agree</p>
+                <p>Strongly Agree</p>
+              </div>
+            <br><br><hr>
+            <br>
+-->
+            <br>
+            <button type="submit">Go to Mediation</button>
+        </form>
+    </div>
 </section>
+<!--
 <section class="simple-post">
 <div class="container-fluid">
 <h3>What to do next?</h3>
-    <p>You can go to the <b>finale mediation</b> page to have a view on the possible debate.</p>
+   <p><font face="Arial" size="4px" color="#474BB7">Click "Go to Mediation" below to have a look at arguments about your votes.</font></p>
     <br>
 
     <div class="primary-button">
@@ -157,6 +306,7 @@
 <br>
 </div>
 </section>
+-->
 
           </div>
         </div>
@@ -181,8 +331,8 @@
             <nav id="menu">
               <ul>
                 <li><a href="analyse.html">Personal Analysis</a></li>
-                <li><a href="votes.html">Votes Summary</a></li>
-                <li><a href="mediation.html">Mediation Process</a></a></li>
+<!--                <li><a href="votes.html">Votes Summary</a></li>
+                <li><a href="mediation.html">Mediation Process</a></a></li> -->
                 <li><a href="http://mediationtool.pythonanywhere.com/newsfeed/index.html">Exit</a></li>
               </ul>
             </nav>

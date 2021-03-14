@@ -55,19 +55,33 @@ https://templatemo.com/tm-529-ramayana
               <div class="container-fluid">
                 <div class="row">
                   <div class="col-md-12">
-                    <h1>Make your own analysis of the algorithm</h1>
+                    <h1>Scenario</h1>
+                    <h3>Our fictionnal character</h3>
                     <p> We present a hypothetical person browsing a newsfeed platform.</p>
                     <p> We’ll call the person Alex. Alex is 27 years old Web developer and designer, residing at Oxford, United Kingdom. </p>
                     <p>During the last few days, Alex has spent time reading news about International Politics.
                     However, Alex usually likes and shares IT and Science related news on the platform.</p>
-                    <p> Alex shares similar demographic information with another user Eli who usually likes and shares news about Entertainement and Arts.</p>
-                    <p>A newsfeed platform aims to show their users the content that would fit the most with what they like and expect.</p>
-                    <p>To recommend news items to Alex, the platform combines information it has collected about them. The algorithm is a
-                    mix of the four features that are explained just below.</p>
-                    <h4>The purpose of this page is to show you how each feature influences the news recommended to Alex and gives you the opportunity
-                    to give us your opinion on whether they are relevant.</h4>
-                    <p>Please read through each algorithm explanation and evaluate the suggested news items by giving your feedback at the bottom of the page.</p>
-                  </div>
+                    <p> Alex shares similar demographic information with another user Eli who usually likes and shares news about Entertainment and Arts.</p>
+                    <h3>Newsfeed platform algorithm</h3>
+                    <p> Newsfeed platforms use an algorithm to suggest the best news content to everyone.
+                        They may try to achieve this by the types of news a user read before (<b>feature A</b>),
+                        based on some broad demographic information about a user (<b>feature B</b>),
+                        by a user’s location (<b>feature C</b>), or prioritising sponsored news items (<b>feature D</b>).
+                    </p>
+                    <p>To recommend news content to Alex, we present how the above four features can be used
+                        by a newsfeed algorithm. Each of these features are used to suggest to Alex what may
+                        matter the most to him.
+                    </p>
+                    <hr>
+                    <p><font face="Arial" size="4px" color="#474BB7"><b>Task 2: Please read through the
+                    description of each feature and their suggested news items and provide your opinion
+                    on each of the features.</b></font></p>
+                    <p><font face="Arial" size="4px" color="#713CAA">After you rate each feature,
+                    you should <u>click on the next tab</u> to read through the next feature. </font></p>
+                    <p><font face="Arial" size="4px" color="#713CAA"><u>Once you have read through all the
+                    four features</u>, then please click "Go to Votes" to see a summary of your votes and
+                    how your votes compared to the aggregated votes of other participants.</font></p>
+                    </div>
                 </div>
               </div>
             </div>
@@ -76,18 +90,43 @@ https://templatemo.com/tm-529-ramayana
 
  <!-- Tab links -->
 <div class="tab">
-  <button class="tablinks" onclick="openCity(event, 'algoA')" id="defaultOpen">Algo A: cookies</button>
-  <button class="tablinks" onclick="openCity(event, 'algoB')">Algo B: account</button>
-  <button class="tablinks" onclick="openCity(event, 'algoC')">Algo C: location</button>
-  <button class="tablinks" onclick="openCity(event, 'algoD')">Algo D: featured</button>
+  {% if doneA %}
+  <button class="tablinks" onclick="openCity(event, 'algoA')"><s>Cookies</s></button>
+  {% else %}
+  <button class="tablinks" onclick="openCity(event, 'algoA')" id="defaultOpen">Cookies</button>
+  {% endif %}
+  {% if doneB %}
+  <button class="tablinks" onclick="openCity(event, 'algoB')"><s>Profile</s></button>
+  {% elif doneA %}
+  <button class="tablinks" onclick="openCity(event, 'algoB')" id="defaultOpen">Profile</button>
+  {% else %}
+  <button class="tablinks" onclick="openCity(event, 'algoB')">Profile</button>
+  {% endif %}
+  {% if doneC %}
+  <button class="tablinks" onclick="openCity(event, 'algoC')"><s>Location</s></button>
+  {% elif doneA and doneB %}
+  <button class="tablinks" onclick="openCity(event, 'algoC')" id="defaultOpen">Location</button>
+  {% else %}
+  <button class="tablinks" onclick="openCity(event, 'algoC')">Location</button>
+  {% endif %}
+  {% if doneD %}
+  <button class="tablinks" onclick="openCity(event, 'algoD')"><s>Sponsors</s></button>
+  {% elif doneA and doneB and doneC %}
+  <button class="tablinks" onclick="openCity(event, 'algoD')" id="defaultOpen">Sponsors</button>
+  {% else %}
+  <button class="tablinks" onclick="openCity(event, 'algoD')">Sponsors</button>
+  {% endif %}
 </div>
 
 <!-- Tab content -->
 <div id="algoA" class="tabcontent">
     <br>
-  <h3>What does Algorithm A compute?</h3>
-  <p>This algorithm generates news content to Alex based on browsing history.
-     The algorithm uses the cookies accepted by Alex to detect Alex’s visited pages.</p>
+<!--  <h3>How cookies are used by the platform?</h3> -->
+    <h3>How is browsing history used by the platform?</h3>
+  <p>The platform suggests news content to Alex based on their browsing history:
+  it uses the cookies accepted by Alex to detect Alex’s visited pages.</p>
+  <p>Since Alex has recently seen news about International Politics, and usually likes
+  news about IT and Science, the platform would suggest the following items to Alex.</p>
 
 <section class="simple-post">
 <div class="container-fluid">
@@ -98,6 +137,7 @@ https://templatemo.com/tm-529-ramayana
         <div class="row">
             <div class="col-lg-10">
                 <h2>{{ news.title }}</h2>
+                Category: {{news.category}}
                 <p>{{ news.body }}</p>
             </div>
         </div>
@@ -108,22 +148,27 @@ https://templatemo.com/tm-529-ramayana
 {% else %}
     <p>No news are available.</p>
 {% endif %}
-</div>
-</section>
-<section class="simple-post">
-<div class="container-fluid">
-<h1>Give us some feedback</h1>
-<p>What do you think about this recommendation, do you think it fits with Alex's profile?</p>
+<br><br><hr><br>
+<h3>What is your opinion on the use of browsing history by the platform?</h3>
+<p2>1) Do you think <u>using browsing history</u> gives news items that are relevant and interesting for Alex?</p2>
 <br>
 <form method="post">
 {% csrf_token %}
+<br>
+    <div class="col-md-4">
     <input type="radio" name="approveA" id="id_yesA" value="yes">
-    <label for="id_yesA">Yes</label><br>
+    <label for="id_yesA">Yes</label>
+    </div>
+    <div class="col-md-4">
     <input type="radio" name="approveA" id="id_noA" value="no">
     <label for="id_noA">No</label><br>
-    <label for="id_comment">Give us your reason:</label>
-    <input type="textarea" id="id_comment" name="comment">
-<br>
+    </div>
+    <br>
+    <label for="id_comment">2) Please briefly explain your opinion on this feature:</label>&nbsp;&nbsp;
+    <div class="textarea-container">
+        <textarea onkeydown="totalCharsA(this)" id="id_comment" name="commentA" rows="4" cols="50" required></textarea>
+        <div>Total Characters: <span id="totalCharsA"> 0</span>/2000</div>
+    </div><br>
 <br>
 <button type="submit">Submit</button>
 </form>
@@ -133,9 +178,11 @@ https://templatemo.com/tm-529-ramayana
 
 <div id="algoB" class="tabcontent">
     <br>
-  <h3>What does Algorithm B compute?</h3>
-  <p>This algorithm generates news content to Alex based on a similar user’s favourites.
-     The algorithm requires Alex to create an account and share personal information.</p>
+  <h3>How is demographic information used by the algorithm?</h3>
+  <p>The platform suggests news content to Alex based on a similar user’s favourites. Since Alex has a personal profile,
+  the platform will use their demographic to be able to find similar users in its database. </p>
+  <p>Since Elihas the same gender, age and location as Alex, and she likes Entertainment and
+  Arts content, the platform would suggest the following items to Alex</p>
 
 <section class="simple-post">
 <div class="container-fluid">
@@ -146,6 +193,7 @@ https://templatemo.com/tm-529-ramayana
         <div class="row">
             <div class="col-lg-10">
                 <h2>{{ news.title }}</h2>
+                Category: {{news.category}}
                 <p>{{ news.body }}</p>
             </div>
         </div>
@@ -156,22 +204,27 @@ https://templatemo.com/tm-529-ramayana
 {% else %}
     <p>No news are available.</p>
 {% endif %}
-</div>
-</section>
-<section class="simple-post">
-<div class="container-fluid">
-<h1>Give us some feedback</h1>
-<p>What do you think about this recommendation, do you think it fits with Alex's profile?</p>
+<br><br><hr><br>
+
+<h3>What is your opinion on the use of demographic information?</h3>
+<p2>1) Do you think <u>using demographic information</u> gives news items that are relevant and interesting for Alex?</p2>
 <br>
 <form method="post">
 {% csrf_token %}
+<br>
+    <div class="col-md-4">
     <input type="radio" name="approveB" id="id_yesB" value="yes">
-    <label for="id_yesB">Yes</label><br>
+    <label for="id_yesB">Yes</label>
+    <div class="col-md-4">
+    </div>
     <input type="radio" name="approveB" id="id_noB" value="no">
     <label for="id_noB">No</label><br>
-    <label for="id_comment">Give us your reason:</label>
-    <input type="textarea" id="id_comment" name="comment">
-<br>
+    </div>
+    <label for="id_comment">2) Please briefly explain your opinion on this feature:</label>&nbsp;&nbsp;
+    <div class="textarea-container">
+        <textarea onkeydown="totalCharsB(this)" id="id_comment" name="commentB" rows="4" cols="50" required></textarea>
+        <div>Total Characters: <span id="totalCharsB"> 0</span>/2000</div>
+    </div><br>
 <br>
 <button type="submit">Submit</button>
 </form>
@@ -181,9 +234,9 @@ https://templatemo.com/tm-529-ramayana
 
 <div id="algoC" class="tabcontent">
     <br>
-  <h3>What does Algorithm C compute?</h3>
-  <p>This algorithm generates news content to Alex based on Alex’s current location.
-     The algorithm shows local news to all users without any personalisation (no cookies, no account).</p>
+  <h3>How is location used by the platform?</h3>
+  <p>The platform suggests news content to Alex based on Alex’s current location: they are located in Oxford so
+  they are shown news related to Oxfordshire and Oxford city.</p>
 
 
 <section class="simple-post">
@@ -195,6 +248,7 @@ https://templatemo.com/tm-529-ramayana
         <div class="row">
             <div class="col-lg-10">
                 <h2>{{ news.title }}</h2>
+                Category: {{news.category}}
                 <p>{{ news.body }}</p>
             </div>
         </div>
@@ -205,22 +259,27 @@ https://templatemo.com/tm-529-ramayana
 {% else %}
     <p>No news are available.</p>
 {% endif %}
-</div>
-</section>
-<section class="simple-post">
-<div class="container-fluid">
-<h1>Give us some feedback</h1>
-<p>What do you think about this recommendation, do you think it fits with Alex's profile?</p>
+<br><br><hr><br>
+<h3>What is your opinion on the use of location</h3>
+<p2>1) Do you think <u>using location</u> gives news items that are relevant and interesting for Alex?</p2>
 <br>
 <form method="post">
 {% csrf_token %}
+<br>
+    <div class="col-md-4">
     <input type="radio" name="approveC" id="id_yesC" value="yes">
-    <label for="id_yesC">Yes</label><br>
+    <label for="id_yesC">Yes</label>
+    </div>
+    <div class="col-md-4">
     <input type="radio" name="approveC" id="id_noC" value="no">
     <label for="id_noC">No</label><br>
-    <label for="id_comment">Give us your reason:</label>
-    <input type="textarea" id="id_comment" name="comment">
-<br>
+    </div>
+    <label for="id_comment">2) Please briefly explain your opinion on this feature:</label>&nbsp;&nbsp;
+    <div class="textarea-container">
+        <textarea onkeydown="totalCharsC(this)" id="id_comment" name="commentC" rows="4" cols="50" required></textarea>
+        <div>Total Characters: <span id="totalCharsC"> 0</span>/2000</div>
+    </div>
+    <br>
 <br>
 <button type="submit">Submit</button>
 </form>
@@ -230,10 +289,13 @@ https://templatemo.com/tm-529-ramayana
 
 <div id="algoD" class="tabcontent">
     <br>
-  <h3>What does Algorithm D compute?</h3>
-  <p>This algorithm shows sponsored and trending news items to Alex (e.g . NHS official communication and Covid-19 news).
-     The algorithm overrides Alex’s cookies, personal information and location.
-     The news might not be adapted to Alex’s taste.</p>
+  <h3>What happens when the platform uses no personal information?</h3>
+  <p>If Alex has refused to allow the platform to access his browsing history,
+  his demographics information or location,, then the platform would have to show
+  non personalised news content. This contains sponsored and trending news items
+  (e.g . NHS official communication and Covid-19 news).</p>
+  <p>However, most of the time, the platform would include such content anyway since
+  its business model is based on sponsors.</p>
 
 <section class="simple-post">
 <div class="container-fluid">
@@ -244,6 +306,7 @@ https://templatemo.com/tm-529-ramayana
         <div class="row">
             <div class="col-lg-10">
                 <h2>{{ news.title }}</h2>
+                Category: {{news.category}}
                 <p>{{ news.body }}</p>
             </div>
         </div>
@@ -254,21 +317,30 @@ https://templatemo.com/tm-529-ramayana
 {% else %}
     <p>No news are available.</p>
 {% endif %}
-</div>
-</section>
-<section class="simple-post">
-<div class="container-fluid">
-<h1>Give us some feedback</h1>
-<p>What do you think about this recommendation, do you think it fits with Alex's profile?</p>
+<br><br><hr><br>
+<h3>What is your opinion on the use of sponsors?</h3>
+<p2>1) Do you think <u>using sponsors</u> gives news items that are relevant and interesting for Alex</p2>
 <br>
 <form method="post">
 {% csrf_token %}
+<br>
+    <div class="col-md-4">
     <input type="radio" name="approveD" id="id_yesD" value="yes">
-    <label for="id_yesD">Yes</label><br>
+    <label for="id_yesD">Yes</label>
+    </div>
+    <div class="col-md-4">
     <input type="radio" name="approveD" id="id_noD" value="no">
     <label for="id_noD">No</label><br>
-    <label for="id_comment">Give us your reason:</label>
-    <input type="textarea" id="id_comment" name="comment">
+    </div>
+    <label for="id_comment">2) Please briefly explain your opinion on this feature:</label>&nbsp;&nbsp;
+    <div class="textarea-container">
+        <textarea onkeydown="totalCharsD(this)" id="id_comment" name="commentD" rows="4" cols="50" required></textarea>
+        <div>Total Characters: <span id="totalCharsD"> 0</span>/2000</div>
+    </div>
+    <br><span id='remainingC'></span>
+
+
+
 <br>
 <br>
 <button type="submit">Submit</button>
@@ -282,13 +354,19 @@ https://templatemo.com/tm-529-ramayana
 <section class="simple-post">
 <div class="container-fluid">
 <h3>What to do next?</h3>
-    <p>You can go to the <b>votes summary</b> page to see what you have voted compared to other participants opinions.</p>
+{% if all_votes %}
+
+    <p><font face="Arial" size="4px" color="#474BB7">Click "Go to Votes" below to go to the <b>votes summary</b>
+    page where you will see your votes compared to the votes of other participants.</font></p>
     <br>
 
     <div class="primary-button">
         <a href="votes.html">Go to Votes</a>
     </div>
 <br>
+{% else %}
+<p><font face="Arial" size="4px" color="#474BB7">You need to review all the features to continue.</font></p>
+{% endif %}
 </div>
 </section>
 
@@ -313,8 +391,8 @@ https://templatemo.com/tm-529-ramayana
             <nav id="menu">
               <ul>
                 <li><a href="analyse.html">Personal Analysis</a></li>
-                <li><a href="votes.html">Votes Summary</a></li>
-                <li><a href="mediation.html">Mediation Process</a></a></li>
+<!--                <li><a href="">Votes Summary</a></li>
+                <li><a href="">Mediation Process</a></a></li>-->
                 <li><a href="http://mediationtool.pythonanywhere.com/newsfeed/index.html">Exit</a></li>
               </ul>
             </nav>
@@ -342,6 +420,7 @@ https://templatemo.com/tm-529-ramayana
     <script src="/static/newsfeed/assets/js/owl-carousel.js"></script>
     <script src="/static/newsfeed/assets/js/custom.js"></script>
     <script src="/static/newsfeed/assets/js/tabs.js"></script>
+    <script src="/static/newsfeed/assets/js/totalchar.js"></script>
 
 </body>
 

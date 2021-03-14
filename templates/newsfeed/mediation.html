@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="/static/newsfeed/assets/css/templatemo-style.css">
     <link rel="stylesheet" href="/static/newsfeed/assets/css/owl.css">
     <link rel="stylesheet" href="/static/newsfeed/assets/css/tabs.css">
+    <link rel="stylesheet" href="/static/newsfeed/assets/css/simpleslider.css">
+
 
   </head>
 
@@ -50,9 +52,12 @@
               <div class="container-fluid">
                 <div class="row">
                   <div class="col-md-12">
-                    <h1>What can be opposed to your opinions?</h1>
-                    <p>This page confronts your <strong>comments</strong> to arguments in favor of the opposite opinion.
-                    It means that for each likes and dislikes element, you have access to the other perspective.</p>
+                    <h3>Can we address your concerns?</h3>
+                    <p>For each feature, this page compares your comments on news items recommended to Alex with arguments from other participants
+                    who have been in favor of the opposite opinion. Please read through each counter argument and see
+                    whether this may change your concern about each feature. </p>
+                    <p><font face="Arial" size="4px" color="#474BB7"><b>Task 4:  Read through the different arguments opposed to your comments.
+                    Then give us some feedback on that mediation process by answering the question.</b></font></p>
                   </div>
                 </div>
               </div>
@@ -61,22 +66,24 @@
 <br>
 
 
-
 <div class="tab">
-  <button class="tablinks" onclick="openCity(event, 'like')" id="defaultOpen">Like</button>
-  <button class="tablinks" onclick="openCity(event, 'dislike')">Dislike</button>
+  <button class="tablinks" onclick="openCity(event, 'AlgoA')" id="defaultOpen">Cookies</button>
+  <button class="tablinks" onclick="openCity(event, 'AlgoB')">Profile</button>
+  <button class="tablinks" onclick="openCity(event, 'AlgoC')">Location</button>
+  <button class="tablinks" onclick="openCity(event, 'AlgoD')">Sponsor</button>
 </div>
 
-<div id="like" class="tabcontent">
 
-<section class="simple-post">
-<div class="container-fluid">
-{% for config in config_yes %}
-    {% if config.isA%}
-        <centre><h3>Algorithm A: when cookies are accepted</h3></centre>
-        {% if initA %}
-            You said that you usually would accept cookies
-        {% endif %}
+<div id="AlgoA" class="tabcontent">
+    <br>
+    <ti><h4>Mediation about cookies</h4></ti><br>
+    {% if yesA %}
+    <ul>
+        <li><b>Your opinion:</b> you found the suggested news items relevant for Alex. <br></li>
+        <li><b>Your concern:</b> you {{ concernA }} sharing your browsing history yourself on a newsfeed platform. <br></li>
+    </ul>
+    <hr>
+        <p2>Here is your comment and an argument against using cookies that someone else could oppose to you:</p2>
             <section class="services">
               <div class="container-fluid">
                 <div class="row">
@@ -91,120 +98,20 @@
                     <div class="service-item sixth-item">
                       <div class="icon"></div>
                       <h4>Opposed argument:</h4>
-                      <p>When we accept cookies, our activity on the Internet tends to be tracked
-                      in order to collect as much data as possible. These data can be used to recommend
-                      the most adapted content (newsfeed, shopping online, etc). However, users don't have
-                      guarantee to control what happens to these data, which can be sold without their
-                      consent, to other companies.</p>
+                      <p>{{comment_consA}}.</p>
                     </div>
                   </div>
                 </div>
               </div>
             </section>
     {% endif %}
-    {% if config.isB%}
-        {% if initB %}
-            You said that you usually would create an account
-        {% endif %}
-        <centre><h3>Algorithm B: when an account is created</h3></centre>
-            <section class="services">
-              <div class="container-fluid">
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="service-item third-item">
-                      <div class="icon"></div>
-                      <h4>Your comment:</h4>
-                      <p>{{commB}}</p>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="service-item sixth-item">
-                      <div class="icon"></div>
-                      <h4>Opposed argument:</h4>
-                      <p>When we create an account, we have to fill in several fields that
-                      must contact personal information. For example, websites often require us to give
-                      our name and date of birth. This is no problem for many people but sometimes
-                      users happen to want to keep such information private.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-    {% endif %}
-    {% if config.isC%}
-        {% if initC %}
-            You said that you usually would share your location
-        {% endif %}
-        <centre><h3>Algorithm C: when location is shared</h3></centre>
-            <section class="services">
-              <div class="container-fluid">
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="service-item third-item">
-                      <div class="icon"></div>
-                      <h4>Your comment:</h4>
-                      <p>{{commC}}</p>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="service-item sixth-item">
-                      <div class="icon"></div>
-                      <h4>Opposed argument:</h4>
-                      <p>When we are asked to share location by a website, then they can
-                      use this information to show more accurate content (local news, corner shop
-                      addresses, etc). However, it can be inconvenient to not have access to global
-                      content sometimes.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-    {% endif %}
-    {% if config.isD%}
-        {% if initD %}
-            You said that you would not accept cookies, create an account or share your location
-        {% endif %}
-        <centre><h3>Algorithm D: when no private information is given</h3></centre>
-            <section class="services">
-              <div class="container-fluid">
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="service-item third-item">
-                      <div class="icon"></div>
-                      <h4>Your comment:</h4>
-                      <p>{{commD}}</p>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="service-item sixth-item">
-                      <div class="icon"></div>
-                      <h4>Opposed argument:</h4>
-                      <p>Sponsored items are mostly generic since they
-                      are not based on any personal information. However, they are biased
-                      since there is always a commercial interest in showing them. </p>
-                      <p>Trending items are the result of the other users consensus, which
-                      make them more relying on popularity than on quality.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-    {% endif %}
-{% endfor %}
-</div>
-</section>
-</div>
-
-<div id="dislike" class="tabcontent">
-
-<section class="simple-post">
-<div class="container-fluid">
-{% for config in config_no %}
-    {% if config.isA%}
-        <centre><h3>Algorithm A: when cookies are accepted</h3></centre>
-        {% if initA %}
-            You said that you usually would accept cookies
-        {% endif %}
+    {% if noA %}
+    <ul>
+        <li><b>Your opinion:</b> you did not find the suggested news items relevant for Alex.<br><br></li>
+        <li><b>Your concern:</b> you {{ concernA }} sharing your browsing history yourself on a newsfeed platform. <br><br></li>
+    </ul>
+    <hr>
+        <p2>Here is your comment and an argument for using cookies that someone else could oppose to you:</p2>
             <section class="services">
               <div class="container-fluid">
                 <div class="row">
@@ -219,21 +126,26 @@
                     <div class="service-item sixth-item">
                       <div class="icon"></div>
                       <h4>Opposed argument:</h4>
-                      <p>Cookies are very important: they allow platforms to collect
-                      information about users' habits when they browse online. They also
-                      give access to occasional browsing, which makes the platform content
-                      accurate and up to date regarding what users would like to see.</p>
+                      <p>{{comment_proA}}.</p>
                     </div>
                   </div>
                 </div>
               </div>
             </section>
     {% endif %}
-    {% if config.isB%}
-        {% if initB %}
-            You said that you usually would create an account
-        {% endif %}
-        <centre><h3>Algorithm B: when an account is created</h3></centre>
+</div>
+
+
+<div id="AlgoB" class="tabcontent">
+    <br>
+    <centre><h4>Mediation about demographic information</h4></centre><br>
+    {% if yesB %}
+    <ul>
+        <li><b>Your opinion:</b> you found the suggested news items relevant for Alex.<br></li>
+        <li><b>Your concern:</b> you {{ concernB }} creating a profile with personal information on a newsfeed platform<br></li>
+    </ul>
+    <hr>
+        <p2>Here is your comment and an argument against personal profiles that someone else could oppose to you:</p2>
             <section class="services">
               <div class="container-fluid">
                 <div class="row">
@@ -248,20 +160,57 @@
                     <div class="service-item sixth-item">
                       <div class="icon"></div>
                       <h4>Opposed argument:</h4>
-                      <p>Creating an account is generally the best way to have the most personalised
-                      content. It is also very useful for the platform to collect such data so
-                      they can train their algorithm to recommend the best items to their users.</p>
+                      <p>{{comment_consB}}.</p>
                     </div>
                   </div>
                 </div>
               </div>
             </section>
     {% endif %}
-    {% if config.isC%}
-        {% if initC %}
-            You said that you usually would share your location
-        {% endif %}
-        <centre><h3>Algorithm C: when location is shared</h3></centre>
+    {% if noB %}
+    <ul>
+        <li><b>Your opinion:</b> you did not find the suggested news items relevant for Alex.<br></li>
+        <li><b>Your concern:</b> you {{ concernB }} creating a profile with personal information on a newsfeed platform<br></li>
+    </ul>
+    <hr>
+        <p2>Here is your comment and an argument for personal profiles that someone else could oppose to you:</p2>
+            <section class="services">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="service-item third-item">
+                      <div class="icon"></div>
+                      <h4>Your comment:</h4>
+                      <p>{{commB}}</p>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="service-item sixth-item">
+                      <div class="icon"></div>
+                      <h4>Opposed argument:</h4>
+                      <p>{{comment_proB}}.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+    {% endif %}
+</div>
+
+
+
+
+
+<div id="AlgoC" class="tabcontent">
+    <br>
+    <centre><h4>Mediation about sharing location</h4></centre><br>
+    {% if yesC %}
+    <ul>
+        <li><b>Your opinion:</b> you found the suggested news items relevant for Alex.<br></li>
+        <li><b>Your concern:</b> you {{ concernC }} sharing your location yourself on a newsfeed platform.<br></li>
+    </ul>
+    <hr>
+        <p2>Here is your comment and an argument against sharing location that someone else could oppose to you:</p2>
             <section class="services">
               <div class="container-fluid">
                 <div class="row">
@@ -276,20 +225,56 @@
                     <div class="service-item sixth-item">
                       <div class="icon"></div>
                       <h4>Opposed argument:</h4>
-                      <p>When location is shared, you have the most accurate content because
-                      it is close to you. It is also quite useful to exclude content that does not concern you
-                      because most of the time, people would not click it.</p>
+                      <p>{{comment_consC}}.</p>
                     </div>
                   </div>
                 </div>
               </div>
             </section>
     {% endif %}
-    {% if config.isD%}
-        {% if initD %}
-            You said that you would not accept cookies, create an account or share your location
-        {% endif %}
-        <centre><h3>Algorithm D: when no private information is given</h3></centre>
+    {% if noC %}
+    <ul>
+        <li><b>Your opinion:</b> you did not find the suggested news items relevant for Alex.<br></li>
+        <li><b>Your concern:</b> you {{ concernC }} sharing your location yourself on a newsfeed platform. <br></li>
+    </ul>
+    <hr>
+        <p2>Here is your comment and an argument for sharing location that someone else could oppose to you:</p2>
+            <section class="services">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="service-item third-item">
+                      <div class="icon"></div>
+                      <h4>Your comment:</h4>
+                      <p>{{commC}}</p>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="service-item sixth-item">
+                      <div class="icon"></div>
+                      <h4>Opposed argument:</h4>
+                      <p>{{comment_proC}}.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+    {% endif %}
+</div>
+
+
+
+
+<div id="AlgoD" class="tabcontent">
+    <br>
+    <centre><h4>Mediation about sponsored content</h4></centre><br>
+    {% if yesD %}
+    <ul>
+        <li><b>Your opinion:</b> you found the suggested news items relevant for Alex.<br></li>
+        <li><b>Your concern:</b> you {{ concernD }} being shown sponsored items on a newsfeed platform.<br></li>
+    </ul>
+    <hr>
+        <p2>Here is your comment and an argument against sponsored content that someone else could oppose to you:</p2>
             <section class="services">
               <div class="container-fluid">
                 <div class="row">
@@ -304,22 +289,235 @@
                     <div class="service-item sixth-item">
                       <div class="icon"></div>
                       <h4>Opposed argument:</h4>
-                      <p>Sponsored items are very important for platforms: most of the time,
-                      their business model relies on advertisement, which is necessary to
-                      keep offering free service.</p>
-                      <p>In addition to sponsored items, platforms usually show trending ones.
-                      This is simply because users will tend to like items that are liked by the majority.
-                      Also the popularity of an item tends to show that it has good qualities.</p>
+                      <p>{{comment_consD}}.</p>
                     </div>
                   </div>
                 </div>
               </div>
             </section>
     {% endif %}
-{% endfor %}
+    {% if noD %}
+    <ul>
+        <li><b>Your opinion:</b> you did not find the suggested news items relevant for Alex. <br></li>
+        <li><b>Your concern:</b> you {{ concernD }} being shown sponsored items on a newsfeed platform.<br></li>
+    </ul>
+    <hr>
+        <p2>Here is your comment and an argument for sponsored content that someone else could oppose to you:</p2>
+            <section class="services">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="service-item third-item">
+                      <div class="icon"></div>
+                      <h4>Your comment:</h4>
+                      <p>{{commD}}</p>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="service-item sixth-item">
+                      <div class="icon"></div>
+                      <h4>Opposed argument:</h4>
+                      <p>{{comment_proD}}.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+    {% endif %}
 </div>
+
+
+
+<section class="simple-post">
+    <div class="container-fluid">
+
+        <form method="post">
+        {% csrf_token %}
+        <h4>1) Please indicate how much you agree or disagree with the following statements.</h4><br>
+<!--
+        <input type="radio" name="approve" id="id_yesA" value="yes">
+        <label for="id_yesA">Yes</label><br>
+        <input type="radio" name="approve" id="id_noA" value="no">
+        <label for="id_noA">No</label><br>
+        <br>
+        <label for="id_comment">Give us your reason (required):</label>&nbsp;&nbsp;
+        <input type="textarea" id="id_comment" name="comment" required>
+        <br>
+-->
+            <p2>a) As a user, I am fine with newsfeed having access to my browsing history</p2> <br>
+<br>
+             <div class="range">
+              <input type="range" name="algoAchangeConcern" id="id_algoAchangeConcern" step = "1" min="0" max="5" value="3" class="slider" width="400px">
+              <div class="sliderticks">
+                <p>Don't know</p>
+                <p>Strongly disagree</p>
+                <p>Disagree</p>
+                <p>No preference</p>
+                <p>Agree</p>
+                <p>Strongly Agree</p>
+              </div>
+            <br><br><hr><br>
+
+            <p2>b) As a user, I am fine with newsfeed knowing my demographic information</p2> <br>
+<br>
+             <div class="range">
+              <input type="range" name="algoBchangeConcern" id="id_algoBchangeConcern" step = "1" min="0" max="5" value="3" class="slider" width="400px">
+              <div class="sliderticks">
+                <p>Don't know</p>
+                <p>Strongly disagree</p>
+                <p>Disagree</p>
+                <p>No preference</p>
+                <p>Agree</p>
+                <p>Strongly Agree</p>
+              </div>
+            <br><br><hr><br>
+
+            <p2>c) As a user, I am fine with newsfeed having access to my location</p2> <br>
+
+<br>
+             <div class="range">
+              <input type="range" name="algoCchangeConcern" id="id_algoCchangeConcern" step = "1" min="0" max="5" value="3" class="slider" width="400px">
+              <div class="sliderticks">
+                <p>Don't know</p>
+                <p>Strongly disagree</p>
+                <p>Disagree</p>
+                <p>No preference</p>
+                <p>Agree</p>
+                <p>Strongly Agree</p>
+              </div>
+            <br><br><hr><br>
+
+            <p2>d) As a user, I am fine with newsfeed showing sponsored content to me</p2> <br>
+<br>
+             <div class="range">
+              <input type="range" name="algoDchangeConcern" id="id_algoDchangeConcern" step = "1" min="0" max="5" value="3" class="slider" width="400px">
+              <div class="sliderticks">
+                <p>Don't know</p>
+                <p>Strongly disagree</p>
+                <p>Disagree</p>
+                <p>No preference</p>
+                <p>Agree</p>
+                <p>Strongly Agree</p>
+              </div>
+            <br><br><hr><br>
+<!--
+        <h4>2) How are you impacted by this mediation?</h4>
+        <br>
+
+
+        <input type="checkbox" name="perception1" id="id_perception1">
+        <label for="id_algoA">I feel I could be more in control of my personal information with this mediation process</label><br>
+        <input type="checkbox" name="perception2" id="id_perception2">
+        <label for="id_algoB">I feel more confident towards newsfeed platforms</label><br>
+        <input type="checkbox" name="perception3" id="id_perception3">
+        <label for="id_algoC">I feel more informed about newsfeed algorithms</label><br>
+        <input type="checkbox" name="perception4" id="id_perception4">
+        <label for="id_algoC">I feel a willing of fairness with this mediation process</label><br>
+1) I feel more confident I am making the right choices when I use newsfeed platforms
+
+2) I feel more informed about how newsfeed platforms work
+
+3) I feel more in control regarding how my data is used on newsfeed platforms
+
+4) I am more positive now about how platforms use data
+
+-->
+
+        <h4>2) Please indicate how much you agree or disagree with the following statements.</h4><br>
+<!--
+        <input type="radio" name="approve" id="id_yesA" value="yes">
+        <label for="id_yesA">Yes</label><br>
+        <input type="radio" name="approve" id="id_noA" value="no">
+        <label for="id_noA">No</label><br>
+        <br>
+        <label for="id_comment">Give us your reason (required):</label>&nbsp;&nbsp;
+        <input type="textarea" id="id_comment" name="comment" required>
+        <br>
+-->
+            <p2>a) I feel more confident I am making the right choices when I use newsfeed platforms</p2> <br>
+<br>
+             <div class="range">
+              <input type="range" name="confident" id="id_confident" step = "1" min="0" max="5" value="3" class="slider" width="400px">
+              <div class="sliderticks">
+                <p>Don't know</p>
+                <p>Strongly disagree</p>
+                <p>Disagree</p>
+                <p>No preference</p>
+                <p>Agree</p>
+                <p>Strongly Agree</p>
+              </div>
+            <br><br><hr><br>
+
+            <p2>b) I feel more informed about how newsfeed platforms work</p2> <br>
+<br>
+             <div class="range">
+              <input type="range" name="informed" id="id_informed" step = "1" min="0" max="5" value="3" class="slider" width="400px">
+              <div class="sliderticks">
+                <p>Don't know</p>
+                <p>Strongly disagree</p>
+                <p>Disagree</p>
+                <p>No preference</p>
+                <p>Agree</p>
+                <p>Strongly Agree</p>
+              </div>
+            <br><br><hr><br>
+
+            <p2>c) I feel more in control regarding how my data is used on newsfeed platforms</p2> <br>
+
+<br>
+             <div class="range">
+              <input type="range" name="incontrol" id="id_incontrol" step = "1" min="0" max="5" value="3" class="slider" width="400px">
+              <div class="sliderticks">
+                <p>Don't know</p>
+                <p>Strongly disagree</p>
+                <p>Disagree</p>
+                <p>No preference</p>
+                <p>Agree</p>
+                <p>Strongly Agree</p>
+              </div>
+            <br><br><hr><br>
+
+            <p2>d) I am more positive now about how platforms use data</p2> <br>
+<br>
+             <div class="range">
+              <input type="range" name="positive" id="id_positive" step = "1" min="0" max="5" value="3" class="slider" width="400px">
+              <div class="sliderticks">
+                <p>Don't know</p>
+                <p>Strongly disagree</p>
+                <p>Disagree</p>
+                <p>No preference</p>
+                <p>Agree</p>
+                <p>Strongly Agree</p>
+              </div>
+            <br><br><hr><br>
+
+
+            <h4>3) What is your opinion about the whole mediation tool (possibility to vote for a feature, display of others' votes, display of others' arguments)</h4>
+            <!-- <label for="id_comment">Please briefly explain why (Max 100 words):</label>&nbsp;&nbsp; -->
+            <br><label for="id_comment_tool">(Max 2000 characters)</label><br>
+            <div class="textarea-container">
+                <textarea onkeydown="totalChars3(this)" id="id_comment_tool" name="comment_tool" rows="4" cols="50" required></textarea>
+                <div>Total Characters: <span id="totalChars3"> 0</span>/2000</div>
+            </div>
+
+            <br><br><hr><br>
+
+            <h4>4) Are there any other features that you would like to be able to discuss?</h4>
+            <br><label for="id_comment_features">(Max 2000 characters)</label><br>
+            <div class="textarea-container">
+                <textarea onkeydown="totalChars4(this)" id="id_comment_features" name="comment_features" rows="4" cols="50" required></textarea>
+                <div>Total Characters: <span id="totalChars4"> 0</span>/2000</div>
+            </div>
+
+            <br><br><hr><br>
+
+        <br>
+        <br>
+        <button type="submit">Submit and exit</button>
+        </form>
+    </div>
 </section>
-</div>
+
 
           </div>
         </div>
@@ -368,6 +566,8 @@
 
   <!-- Scripts -->
   <!-- Bootstrap core JavaScript -->
+
+
     <script src="/static/newsfeed/vendor/jquery/jquery.min.js"></script>
     <script src="/static/newsfeed/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -377,6 +577,7 @@
     <script src="/static/newsfeed/assets/js/owl-carousel.js"></script>
     <script src="/static/newsfeed/assets/js/custom.js"></script>
     <script src="/static/newsfeed/assets/js/tabs.js"></script>
+    <script src="/static/newsfeed/assets/js/totalchar.js"></script>
 
 </body>
 

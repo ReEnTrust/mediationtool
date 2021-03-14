@@ -15,6 +15,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="/static/newsfeed/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css" rel="stylesheet">
 
 <!--
 Ramayana CSS Template
@@ -25,6 +26,8 @@ https://templatemo.com/tm-529-ramayana
     <link rel="stylesheet" href="/static/newsfeed/assets/css/fontawesome.css">
     <link rel="stylesheet" href="/static/newsfeed/assets/css/templatemo-style.css">
     <link rel="stylesheet" href="/static/newsfeed/assets/css/owl.css">
+    <link rel="stylesheet" href="/static/newsfeed/assets/css/simpleslider.css">
+
     {% endblock head_css %}
 
   </head>
@@ -60,9 +63,11 @@ https://templatemo.com/tm-529-ramayana
                         <div class="col-md-12">
                         {% block banner_title %}
                           <div class="banner-caption">
-                            <h4>Hello, this is a <em>Mediation Tool</em>.</h4>
-                            <span>by ReEnTrust Project</span>
-                            <p>The Mediation Tool is a platform developed by the ReEnTrust Project to experiment about users’ empowerment on recommendation systems. More at <a href="http://reentrust.org/">http://reentrust.org/</a></p>
+                            <h4>Welcome to the <em>Mediation Tool !</em></h4>
+                            <span>by ReEnTrust Project <a href="http://reentrust.org/">https://reentrust.org/</a></span>
+                            <p>This tool is designed to investigate users' concerns about the algorithms of a newsfeed platform and the impact of a mediation process on such concerns.</p>
+                            <p>The tool demonstrates how newsfeed algorithms work. As a user, you will express your opinion about some features of a newsfeed platform.
+                            You will also reflect on the presented mediation process and discuss how it impacts your opinion.</p>
                           </div>
                         {% endblock banner_title %}
                         </div>
@@ -77,27 +82,200 @@ https://templatemo.com/tm-529-ramayana
 
 <section class="simple-post">
     <div class="container-fluid">
+        <p><font face="Arial" size="4px" color="#474BB7"><b>Task 1: Please, answer each of the following
+        statement by chosing the option that fits the most with your opinion.
+        Enter your identification code and click "Enter" to continue</b></font></p> <br>
+
         <form method="post">
             {% csrf_token %}
-            <h1>Enter the mediation tool</h1>
-            <p> Before starting, we would like to know a little bit more about yourself.
-                Please check all the options corresponding to your opinion about newsfeed.
-                At leat one option must be checked:</p>
+            <h4>1) Please indicate how much you agree or disagree with the following statements.</h4>
+            <br><hr><br>
+
+<!--
+            <p2>a) How much do you agree that newsfeed platform can access and use your previous browsing history to recommend news to you</p2><br>
             <br>
+             <div class="range">
+              <input type="range" name="qu1_1" id="id_qu1_1" step = "1" min="0" max="5" value="3" class="slider">
+              <div class="sliderticks">
+                <p>Don't know</p>
+                <p>Strongly disagree</p>
+                <p>Disagree</p>
+                <p>No preference</p>
+                <p>Agree</p>
+                <p>Strongly Agree</p>
+              </div>
+            <br><br><hr>
+
+            <p2>b) How much do you agree that newsfeed platform can collect and use your demographic information to recommend news to you</p2><br>
+            <br>
+             <div class="range">
+              <input type="range" name="qu1_2" id="id_qu1_2" step = "1" min="0" max="5" value="3" class="slider">
+              <div class="sliderticks">
+                <p>Don't know</p>
+                <p>Strongly disagree</p>
+                <p>Disagree</p>
+                <p>No preference</p>
+                <p>Agree</p>
+                <p>Strongly Agree</p>
+              </div>
+            <br><br><hr>
+
+            <p2>c) How much do you agree that newsfeed platform can access your location information to recommend news to you</p2><br>
+            <br>
+             <div class="range">
+              <input type="range" name="qu1_3" id="id_qu1_3" step = "1" min="0" max="5" value="3" class="slider">
+              <div class="sliderticks">
+                <p>Don't know</p>
+                <p>Strongly disagree</p>
+                <p>Disagree</p>
+                <p>No preference</p>
+                <p>Agree</p>
+                <p>Strongly Agree</p>
+              </div>
+            <br><br><hr>
+-->
+        <p2>a) As a user, I am fine with a newsfeed platform using my browsing history to recommend news to me.</p2>
+<!--
+        <p>If you accept cookies on a newsfeed platform, the platform can access your browsing history.
+        Cookies is a small piece of data stored on your computer while browsing a website. It records your browsing activities.
+        </p>
+-->
+        <p>Platforms do this by using cookies: it consists in accessing a very small file on your computer containing
+        information about your browsing history (what other websites your visited).</p>
+            <br>
+            <div class="range">
+              <input type="range" name="algoAconcern" id="id_algoAconcern" step = "1" min="0" max="5" value="3" class="slider">
+              <div class="sliderticks">
+                <p>Don't know</p>
+                <p>Strongly disagree</p>
+                <p>Disagree</p>
+                <p>No preference</p>
+                <p>Agree</p>
+                <p>Strongly Agree</p>
+              </div>
+            <br><br><hr>
+            <br>
+
+        <p2>b) As a user, I am fine with a newsfeed platform collecting and using my demographic information to recommend news to me.</p2>
+<!--        <p>A newsfeed platform collects your demographic information like gender, age, name, educational qualification etc when you create a profile account.</p>
+-->
+            <p>Platforms do this by asking you to create a profile and enter personal information like your gender, age, name, etc.</p>
+            <br>
+            <div class="range">
+              <input type="range" name="algoBconcern" id="id_algoBconcern" step = "1" min="0" max="5" value="3" class="slider">
+              <div class="sliderticks">
+                <p>Don't know</p>
+                <p>Strongly disagree</p>
+                <p>Disagree</p>
+                <p>No preference</p>
+                <p>Agree</p>
+                <p>Strongly Agree</p>
+              </div>
+            <br><br><hr>
+            <br>
+
+<!--
+            <input type="checkbox" name="algoCconcern" id="id_algoCconcern">
+            <label for="id_algoC">Seeing this table makes me question my vote on feature C</label><br>
+-->
+            <p2>c) As a user, I am fine with a newsfeed platform accessing and using my location information to recommend news to me.</p2>
+<!--            <p>A newsfeed platform can capture your location through the IP address of your device or
+            through the demographic information you supplied when creating an account.
+            An Internet Protocol address (IP address) is a numerical label
+            assigned to each device connected to a computer network that uses the Internet Protocol for communication.
+            Your IP address gives your location to a newsfeed platform.
+            </p>
+-->
+            <p>Platforms do this by capturing the localisation of your device (mobile phone, broadband, etc)
+            or asking you to enter your address when creating a profile.</p>
+            <br>
+            <div class="range">
+              <input type="range" name="algoCconcern" id="id_algoCconcern" step = "1" min="0" max="5" value="3" class="slider">
+              <div class="sliderticks">
+                <p>Don't know</p>
+                <p>Strongly disagree</p>
+                <p>Disagree</p>
+                <p>No preference</p>
+                <p>Agree</p>
+                <p>Strongly Agree</p>
+              </div>
+            <br><br><hr>
+            <br>
+
+<!--
+            <input type="checkbox" name="algoDconcern" id="id_algoDconcern">
+            <label for="id_algoDconcern">Seeing this table makes me question my vote on feature D</label><br>
+-->
+            <p2>d) As a user, I am fine with a newsfeed platform recommending sponsored news to me.</p2>
+            <p> Platforms do this as a part of their business model. An advertiser can buy space on a
+            <br>
+            <div class="range">
+              <input type="range" name="algoDconcern" id="id_algoDconcern" step = "1" min="0" max="5" value="3" class="slider">
+              <div class="sliderticks">
+                <p>Don't know</p>
+                <p>Strongly disagree</p>
+                <p>Disagree</p>
+                <p>No preference</p>
+                <p>Agree</p>
+                <p>Strongly Agree</p>
+              </div>
+            <br><br><hr>
+            <br>
+            <br>
+            <label for="id_dataInstance">Please enter your identification code: &nbsp;&nbsp;</label>
+            <input type="text" name="dataInstance" required="True" id="id_dataInstance">
+            <br><br><br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="submit" style="font-size: 100%;">Continue</button>
+            </form>
+
+
+
+<!--
+        <p><font face="Arial" size="4px" color="#474BB7"><b>Task 1: Please, answer the following questions and fill the two forms by checking the option(s)
+        that correspond to your choices when using a newsfeed platform.
+        Enter your identification code and click "Enter" to continue</b></font></p> <br>
+<hr>
+        <form method="post">
+            {% csrf_token %}
+            <h4>1) To what extent are you aware of the role of algorithms in newsfeed platforms, such as Google news, Apple news etc?</h4>
+            <br>
+            <label for="id_question1">Answer:</label>
+            <input type="textarea" name="question1" required="" id="id_question1" required>
+            <br><br><br>
+<hr>
+            <h4>2) Of the following, which most closely matches what you understand by algorithms in news aggregator sites?</h4><br>
+            <input type="checkbox" name="question2_1" id="id_question2_1">
+            <label for="id_question2_1">Algorithms are series of rules to be followed by computers to carry out a task</label><br>
+            <input type="checkbox" name="question2_2" id="id_question2_2">
+            <label for="id_question2_2">Algorithms are computer programs to find information for us or make decisions about without human bias</label><br>
+            <input type="checkbox" name="question2_3" id="id_question2_3">
+            <label for="id_question2_3">Algorithms are computer programmes that use massive amounts of data and complex analytics to make decisions with often significant impacts on humans.</label><br>
+            <input type="checkbox" name="question2_4" id="id_question2_4">
+            <label for="id_question2_4">None of the above</label><br>
+            <br><br>
+<hr>
+            <h4>3) As a user, what data would you give to a newsfeed platform?</h4>
+            <p> <font face="Arial" size="4px"> Newsfeed platforms suggest news items to users based on their personal data, interests and preferences.</font></p>
+
             <input type="checkbox" name="algoA" id="id_algoA">
-            <label for="id_algoA">I usually would accept cookies</label><br>
+            <label for="id_algoA">I would accept cookies</label><br>
             <input type="checkbox" name="algoB" id="id_algoB">
-            <label for="id_algoB">I usually would create an account</label><br>
+            <label for="id_algoB">I would create an account and supply my personal information</label><br>
             <input type="checkbox" name="algoC" id="id_algoC">
-            <label for="id_algoC">I usually would share my location</label><br>
+            <label for="id_algoC">I would share my location</label><br>
             <input type="checkbox" name="algoD" id="id_algoD">
-            <label for="id_algoD">I agree with none of these options</label><br>
+            <label for="id_algoD">None of these options is acceptable</label><br>
             <br>
+<hr>
             <label for="id_dataInstance">IDENTIFICATION CODE: &nbsp;&nbsp;</label>
             <input type="text" name="dataInstance" required="" id="id_dataInstance">
             <br><br>
-            <button type="submit" style="font-size: 100%;" value="Test Required" id="checkBtn">Start mediation</button>
+            <button type="submit" style="font-size: 100%;" value="Test Required" id="checkBtn">Enter</button>
         </form>
+-->
     </div>
 </section>
 
@@ -211,6 +389,30 @@ https://templatemo.com/tm-529-ramayana
 
   <!-- Scripts -->
   <!-- Bootstrap core JavaScript -->
+
+  <script>
+var slider1 = document.getElementById("qu1_1");
+var slider2 = document.getElementById("qu1_2");
+var slider3 = document.getElementById("qu1_3");
+
+output.innerHTML = slider1.value;
+output.innerHTML = slider2.value;
+output.innerHTML = slider3.value;
+
+slider1.oninput = function() {
+  output.innerHTML = this.value;
+}
+slider2.oninput = function() {
+  output.innerHTML = this.value;
+}
+slider3.oninput = function() {
+  output.innerHTML = this.value;
+}
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.12.0/jquery-ui.min.js" ></script>
+
     <script src="/static/newsfeed/vendor/jquery/jquery.min.js"></script>
     <script src="/static/newsfeed/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -220,6 +422,8 @@ https://templatemo.com/tm-529-ramayana
     <script src="/static/newsfeed/assets/js/owl-carousel.js"></script>
     <script src="/static/newsfeed/assets/js/custom.js"></script>
     <script src="/static/newsfeed/assets/js/index.js"></script>
+
+
 </body>
 
 

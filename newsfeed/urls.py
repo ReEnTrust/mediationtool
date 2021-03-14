@@ -5,6 +5,7 @@ from . import views
 
 urlpatterns = [
     path('index.html',views.IndexView.as_view(), name='index'),
+    path('exit.html',views.ExitView.as_view(), name='exit'),
 #    path('<DataInstance>/result.html',views.ResultView.as_view(), name='result'),
     path('<DataInstance>/analyse.html',views.AnalyseView.as_view(), name='analyse'),
 #    path('<DataInstance>/privacy.html',views.PrivacyView.as_view(), name='privacy'),

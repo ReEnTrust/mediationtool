@@ -1,6 +1,5 @@
 from django import forms
 
-
 class UserFormPrivacy(forms.Form):
 #    age = forms.BooleanField(label='age', required=False)
 #    gender = forms.BooleanField(label='gender', required=False)
@@ -30,7 +29,15 @@ class ApproveForm(forms.Form):
     approveC = forms.ChoiceField(choices = APPROVE_CHOICES, label="approveC", widget=forms.RadioSelect, required=False)
     approveD = forms.ChoiceField(choices = APPROVE_CHOICES, label="approveD", widget=forms.RadioSelect, required=False)
 
+    commentA = forms.CharField(widget=forms.Textarea, required=True)
+    commentB = forms.CharField(widget=forms.Textarea, required=True)
+    commentC = forms.CharField(widget=forms.Textarea, required=True)
+    commentD = forms.CharField(widget=forms.Textarea, required=True)
+
+
+
 class ApproveFormA(forms.Form):
+    commentA = forms.CharField(widget=forms.Textarea, required=True)
     APPROVE_CHOICES = [
         ('yes', 'yes'),
         ('no', 'no'),
@@ -38,6 +45,7 @@ class ApproveFormA(forms.Form):
     approveA = forms.ChoiceField(choices = APPROVE_CHOICES, label="approveA", widget=forms.RadioSelect, required=False)
 
 class ApproveFormB(forms.Form):
+    commentB = forms.CharField(widget=forms.Textarea, required=True)
     APPROVE_CHOICES = [
         ('yes', 'yes'),
         ('no', 'no'),
@@ -45,6 +53,7 @@ class ApproveFormB(forms.Form):
     approveB = forms.ChoiceField(choices = APPROVE_CHOICES, label="approveB", widget=forms.RadioSelect, required=False)
 
 class ApproveFormC(forms.Form):
+    commentC = forms.CharField(widget=forms.Textarea, required=True)
     APPROVE_CHOICES = [
         ('yes', 'yes'),
         ('no', 'no'),
@@ -52,6 +61,7 @@ class ApproveFormC(forms.Form):
     approveC = forms.ChoiceField(choices = APPROVE_CHOICES, label="approveC", widget=forms.RadioSelect, required=False)
 
 class ApproveFormD(forms.Form):
+    commentD = forms.CharField(widget=forms.Textarea, required=True)
     APPROVE_CHOICES = [
         ('yes', 'yes'),
         ('no', 'no'),
@@ -67,10 +77,61 @@ class LogForm(forms.Form):
 #        ('algoD', 'algoD'),
 #    ]
 #    algo = forms.ChoiceField(choices = ALGO_CHOICES, label="algo", widget=forms.RadioSelect, required=True)
-    algoA = forms.BooleanField(label='algoA', required=False)
-    algoB = forms.BooleanField(label='algoB', required=False)
-    algoC = forms.BooleanField(label='algoC', required=False)
-    algoD = forms.BooleanField(label='algoD', required=False)
+
+#    qu1_1 = forms.IntegerField(widget=forms.NumberInput(attrs={'type':'range', 'step': '1', 'min': '0', 'max': '5', 'id':'id_qu1_1'}), label='qu1_1', required=True)
+# qu1_2 = forms.IntegerField(widget=forms.NumberInput(attrs={'type':'range', 'step': '1', 'min': '0', 'max': '5', 'id':'id_qu1_2'}), label='qu1_2', required=True)
+#    qu1_3 = forms.IntegerField(widget=forms.NumberInput(attrs={'type':'range', 'step': '1', 'min': '0', 'max': '5', 'id':'id_qu1_3'}), label='qu1_3', required=True)
+    algoAconcern = forms.IntegerField(widget=forms.NumberInput(attrs={'type':'range', 'step': '1', 'min': '0', 'max': '5', 'id':'id_algoAconcern'}), label='algoAconcern', required=True)
+    #forms.BooleanField(label='algoAconcern', required=False)
+    algoBconcern = forms.IntegerField(widget=forms.NumberInput(attrs={'type':'range', 'step': '1', 'min': '0', 'max': '5', 'id':'id_algoBconcern'}), label='algoBconcern', required=True)
+    #forms.BooleanField(label='algoBconcern', required=False)
+    algoCconcern = forms.IntegerField(widget=forms.NumberInput(attrs={'type':'range', 'step': '1', 'min': '0', 'max': '5', 'id':'id_algoCconcern'}), label='algoCconcern', required=True)
+    #forms.BooleanField(label='algoCconcern', required=False)
+    algoDconcern = forms.IntegerField(widget=forms.NumberInput(attrs={'type':'range', 'step': '1', 'min': '0', 'max': '5', 'id':'id_algoDconcern'}), label='algoDconcern', required=True)
+    #forms.BooleanField(label='algoDconcern', required=False)
+
+
+
+
+class ChangeVoteForm(forms.Form):
+#    ALGO_CHOICES = [
+#        ('algoA', 'algoA'),
+#        ('algoB', 'algoB'),
+#        ('algoC', 'algoC'),
+#        ('algoD', 'algoD'),
+#    ]
+#    algo = forms.ChoiceField(choices = ALGO_CHOICES, label="algo", widget=forms.RadioSelect, required=True)
+    algoAchange = forms.IntegerField(widget=forms.NumberInput(attrs={'type':'range', 'step': '1', 'min': '0', 'max': '5', 'id':'id_algoAchange'}), label='algoAchange', required=True)
+    #forms.BooleanField(label='algoAchange', required=False)
+    algoBchange = forms.IntegerField(widget=forms.NumberInput(attrs={'type':'range', 'step': '1', 'min': '0', 'max': '5', 'id':'id_algoBchange'}), label='algoBchange', required=True)
+    #forms.BooleanField(label='algoBchange', required=False)
+    algoCchange = forms.IntegerField(widget=forms.NumberInput(attrs={'type':'range', 'step': '1', 'min': '0', 'max': '5', 'id':'id_algoCchange'}), label='algoCchange', required=True)
+    #forms.BooleanField(label='algoCchange', required=False)
+    algoDchange = forms.IntegerField(widget=forms.NumberInput(attrs={'type':'range', 'step': '1', 'min': '0', 'max': '5', 'id':'id_algoDchange'}), label='algoDchange', required=True)
+    #forms.BooleanField(label='algoDchange', required=False)
+
+#    ALGO_CHOICES = [
+#        ('algoA', 'algoA'),
+#        ('algoB', 'algoB'),
+#        ('algoC', 'algoC'),
+#        ('algoD', 'algoD'),
+#    ]
+
+
+class MediationForm(forms.Form):
+
+    algoAchangeConcern = forms.IntegerField(widget=forms.NumberInput(attrs={'type':'range', 'step': '1', 'min': '0', 'max': '5', 'id':'id_algoAchangeConcern'}), label='algoAchangeConcern', required=True)
+    algoBchangeConcern = forms.IntegerField(widget=forms.NumberInput(attrs={'type':'range', 'step': '1', 'min': '0', 'max': '5', 'id':'id_algoBchangeConcern'}), label='algoBchangeConcern', required=True)
+    algoCchangeConcern = forms.IntegerField(widget=forms.NumberInput(attrs={'type':'range', 'step': '1', 'min': '0', 'max': '5', 'id':'id_algoCchangeConcern'}), label='algoCchangeConcern', required=True)
+    algoDchangeConcern = forms.IntegerField(widget=forms.NumberInput(attrs={'type':'range', 'step': '1', 'min': '0', 'max': '5', 'id':'id_algoDchangeConcern'}), label='algoDchangeConcern', required=True)
+
+    confident = forms.IntegerField(widget=forms.NumberInput(attrs={'type':'range', 'step': '1', 'min': '0', 'max': '5', 'id':'id_confident'}), label='confident', required=True)
+    informed = forms.IntegerField(widget=forms.NumberInput(attrs={'type':'range', 'step': '1', 'min': '0', 'max': '5', 'id':'id_informed'}), label='informed', required=True)
+    incontrol = forms.IntegerField(widget=forms.NumberInput(attrs={'type':'range', 'step': '1', 'min': '0', 'max': '5', 'id':'id_incontrol'}), label='incontrol', required=True)
+    positive = forms.IntegerField(widget=forms.NumberInput(attrs={'type':'range', 'step': '1', 'min': '0', 'max': '5', 'id':'id_confident'}), label='confident', required=True)
+
+    comment_tool = forms.CharField(widget=forms.Textarea, required=True)
+    comment_features = forms.CharField(widget=forms.Textarea, required=True)
 
 class SettingsForm(forms.Form):
 #    algoA = forms.BooleanField(label='algoA', required=False)
@@ -100,4 +161,12 @@ class FeedbackForm(forms.Form):
         (6, 'Totally agree'),
     ]
     feed = forms.ChoiceField(choices = FEED_CHOICES, label="feed", widget=forms.RadioSelect, required=False)
+
+
+
+
+
+
+
+
 
